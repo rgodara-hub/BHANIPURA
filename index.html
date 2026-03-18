@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>BHANIPURA COURT REMINDER</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#0f172a;min-height:100vh}
+.lw{position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,#0f172a,#1e3a5f,#0f3460);display:flex;align-items:center;justify-content:center;padding:20px;z-index:9999}
+.lb{background:white;border-radius:20px;padding:28px 22px;width:100%;max-width:370px;box-shadow:0 25px 60px rgba(0,0,0,.5)}
+.ll{text-align:center;margin-bottom:18px}
+.ll .ico{font-size:2.8rem}
+.ll h1{font-size:1.2rem;font-weight:900;color:#0f172a;margin-top:6px}
+.ll p{font-size:0.75rem;color:#64748b;margin-top:2px}
+.ls{background:linear-gradient(135deg,#0f3460,#1a56db);color:white;text-align:center;padding:7px;border-radius:8px;font-size:0.78rem;margin-bottom:14px}
+.lf{margin-bottom:12px}
+.lf label{display:block;font-size:0.78rem;font-weight:700;color:#475569;margin-bottom:4px}
+.lf input{width:100%;padding:10px 13px;border:2px solid #e2e8f0;border-radius:9px;font-size:0.92rem}
+.lf input:focus{outline:none;border-color:#0f3460}
+.lbtn{width:100%;padding:12px;background:linear-gradient(135deg,#0f3460,#1a56db);color:white;border:none;border-radius:10px;font-size:0.95rem;font-weight:800;cursor:pointer}
+.lbtn:disabled{opacity:.6}
+.lerr{color:#dc2626;font-size:0.78rem;text-align:center;margin-top:7px;min-height:18px}
+.lfgt{text-align:center;margin-top:9px;font-size:0.78rem;color:#0f3460;cursor:pointer;text-decoration:underline}
+.app{display:none}
+.hdr{background:white;border-radius:0 0 14px 14px;padding:11px 13px;box-shadow:0 4px 20px rgba(0,0,0,.2);position:sticky;top:0;z-index:100;margin-bottom:7px}
+.htop{display:flex;justify-content:space-between;align-items:center}
+.ht h1{font-size:1.05rem;font-weight:900;color:#0f172a}
+.ht p{font-size:0.7rem;color:#64748b}
+.hr{text-align:right}
+.ubadge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:0.7rem;font-weight:700;color:white;background:#0f3460;margin-bottom:2px}
+.ubadge.adm{background:linear-gradient(135deg,#d4af37,#f59e0b);color:#1a1a2e}
+.lgo{display:block;font-size:0.68rem;color:#dc2626;cursor:pointer;text-decoration:underline;text-align:right}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:0 8px 7px}
+.sc{background:white;border-radius:10px;padding:9px 4px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.1);cursor:pointer}
+.sn{font-size:1.35rem;font-weight:900}.sl{font-size:0.63rem;color:#64748b;margin-top:2px}
+.s0 .sn{color:#0f172a}.s1 .sn{color:#16a34a}.s2 .sn{color:#dc2626}
+.s3 .sn{color:#d97706}.s4 .sn{color:#059669}.s5 .sn{color:#dc2626}
+.todal{background:linear-gradient(135deg,#dc2626,#b91c1c);color:white;border-radius:9px;padding:9px 13px;margin:0 8px 7px;font-size:0.8rem;font-weight:700;cursor:pointer;display:none}
+.tabs{display:flex;overflow-x:auto;padding:0 8px 7px;gap:5px;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex-shrink:0;padding:6px 13px;background:white;border:none;border-radius:18px;font-size:0.73rem;font-weight:700;cursor:pointer;color:#64748b;white-space:nowrap;transition:all .2s}
+.tab.on{background:#0f3460;color:white;box-shadow:0 3px 10px rgba(15,52,96,.3)}
+.ctrl{background:white;border-radius:11px;padding:10px;margin:0 8px 7px;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.sbox{width:100%;padding:8px 13px;border:2px solid #e2e8f0;border-radius:8px;font-size:0.88rem;margin-bottom:8px}
+.sbox:focus{outline:none;border-color:#0f3460}
+.arow{display:flex;gap:5px;flex-wrap:wrap;align-items:center}
+.btn{padding:6px 11px;border:none;border-radius:7px;cursor:pointer;font-size:0.75rem;font-weight:700;transition:all .15s}
+.btn:active{transform:scale(.96)}
+.badd{background:#0f3460;color:white}.bcsv{background:#16a34a;color:white}
+.bmo{background:#9f7aea;color:white}.bsv{background:#dc2626;color:white}
+.bus{background:#d97706;color:white}.bsr{background:#0891b2;color:white}
+.bstf{background:#6366f1;color:white}
+.cbadge{background:#0f172a;color:white;border-radius:18px;padding:3px 9px;font-size:0.72rem;font-weight:700}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(285px,1fr));gap:8px;padding:0 8px 80px}
+.empty{grid-column:1/-1;text-align:center;padding:40px;color:white;font-size:.95rem}
+.card{background:white;border-radius:11px;padding:11px;box-shadow:0 2px 10px rgba(0,0,0,.08);border-left:4px solid #cbd5e1}
+.card.bw{border-left-color:#16a34a}.card.aw{border-left-color:#dc2626}.card.notice{border-left-color:#d97706}
+.card.dk{opacity:.5}.card.ov{background:#fff5f5;border-left-color:#dc2626}
+.ctop{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:7px}
+.cn{font-weight:800;font-size:0.86rem;color:#0f172a;line-height:1.3}
+.badge{padding:2px 7px;border-radius:11px;font-size:0.65rem;font-weight:700;display:inline-block;margin-top:3px}
+.bbw{background:#dcfce7;color:#166534}.baw{background:#fee2e2;color:#991b1b}.bnotice{background:#fef3c7;color:#92400e}
+.bov{background:#fee2e2;color:#991b1b;margin-left:3px}.btd{background:#fef9c3;color:#92400e;margin-left:3px}
+.bnis{background:#f0fdf4;color:#166534;font-size:0.6rem;margin-left:3px;padding:2px 6px;border-radius:8px;font-weight:700;display:inline-block}
+.cfc{font-size:0.76rem;font-weight:700;color:#0f172a}.cst{font-size:0.68rem;color:#64748b}
+.ci{font-size:0.78rem;line-height:1.7;margin-bottom:6px;color:#475569}
+.nd{background:#f0f9ff;border-radius:6px;padding:4px 8px;font-size:0.78rem;margin-bottom:6px;display:flex;justify-content:space-between}
+.nd.ex{background:#fff1f2;color:#be123c}
+.nb{font-size:0.74rem;color:#64748b;margin-bottom:6px;padding:4px 7px;background:#f8fafc;border-radius:5px}
+.cbs{display:flex;gap:4px;flex-wrap:wrap}
+.cb{padding:4px 7px;border:none;border-radius:5px;cursor:pointer;font-size:0.7rem;font-weight:700}
+.cb:active{transform:scale(.93)}
+.cw{background:#0f3460;color:white}.ce{background:#fef3c7;color:#92400e}
+.co{background:#dcfce7;color:#166534}.cu{background:#f0fdf4;color:#166534;border:1px solid #86efac}
+.cws{background:#128C7E;color:white}.cwa{background:#25d366;color:white}
+.cd{background:#fff1f2;color:#be123c;border:1px solid #fecdd3}
+.toast{position:fixed;bottom:65px;left:50%;transform:translateX(-50%);background:#0f172a;color:white;padding:7px 16px;border-radius:18px;font-size:0.76rem;font-weight:700;z-index:9998;opacity:0;transition:opacity .3s;pointer-events:none;white-space:nowrap}
+.toast.on{opacity:1}
+.ovl{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.6);z-index:1000;overflow-y:auto;padding:10px}
+.ovl.open{display:flex;align-items:flex-start;justify-content:center}
+.modal{background:white;border-radius:15px;padding:15px;width:100%;max-width:480px;margin:auto}
+.modal h3{font-size:.96rem;margin-bottom:11px;color:#0f172a;text-align:center;font-weight:800}
+.fg{margin-bottom:8px}
+.fg label{display:block;font-size:0.76rem;font-weight:700;color:#475569;margin-bottom:3px}
+.fg input,.fg select,.fg textarea{width:100%;padding:7px 10px;border:1.5px solid #e2e8f0;border-radius:7px;font-size:0.83rem}
+.fg input:focus,.fg select:focus{outline:none;border-color:#0f3460}
+.fg2{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.mbs{display:flex;gap:7px;margin-top:9px}
+.mbs .btn{flex:1;padding:9px;font-size:0.82rem}
+.bsave{background:#0f3460;color:white}.bcan{background:#e2e8f0;color:#475569}
+.wovl{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.75);z-index:2000;overflow-y:auto;padding:8px}
+.wovl.open{display:flex;align-items:flex-start;justify-content:center}
+.wbox{background:white;border-radius:11px;padding:10px;width:100%;max-width:600px;margin:auto}
+.wtb{display:flex;gap:5px;margin-bottom:9px}
+.wtb .btn{flex:1;padding:7px}
+.wsetup{background:#f8fafc;padding:11px;border-radius:9px;margin-bottom:9px}
+.wtypes{display:flex;gap:4px;margin-bottom:9px}
+.wt{flex:1;padding:6px 2px;border:2px solid #e2e8f0;border-radius:7px;cursor:pointer;text-align:center;font-weight:700;font-size:0.72rem;background:white;transition:all .2s;line-height:1.4}
+.wt.on{border-color:#0f3460;background:#0f3460;color:white}
+.bxb{background:#f0f9ff;border-radius:7px;padding:9px;margin-bottom:8px}
+.bxb label{display:block;font-weight:700;margin-bottom:4px;font-size:0.82rem}
+.bxb input{width:100%;padding:7px;border:2px solid #0f3460;border-radius:7px;font-size:.95rem;text-align:center;font-weight:700}
+.wdoc{background:white;padding:15px;font-family:'Noto Sans Devanagari','Mangal','Times New Roman',serif;font-size:12px;line-height:1.7;border:1px solid #bbb}
+.wh{text-align:center;margin-bottom:10px;border-bottom:2px solid #000;padding-bottom:7px}
+.wh h2{font-size:13px;font-weight:bold;margin-bottom:2px}.wh h3{font-size:11px;font-weight:normal}
+.wm{display:flex;justify-content:space-between;margin-bottom:10px;font-size:11px}
+.wml{border:1px solid #000;padding:6px 9px;line-height:1.6}.wmr{text-align:right;line-height:1.6}
+.wb{text-align:justify;margin-bottom:9px}
+.wbx{border:2px solid #000;padding:9px;margin:10px 0;text-align:center;line-height:1.7}
+.wbxt{font-weight:bold;margin-bottom:4px;font-size:12px}
+.ww{background:#fff5f5;border:2px solid #dc2626;padding:8px;margin:10px 0;text-align:center;font-weight:bold;color:#dc2626}
+.wsg{margin-top:16px;display:flex;justify-content:space-between}
+.wsb{text-align:center;width:45%}
+.wsi{margin-top:40px;border-top:1px solid #000;padding-top:4px;font-size:11px}
+.wft{margin-top:12px;border-top:1px solid #ccc;padding-top:7px;font-size:10px;line-height:1.6}
+.rpt{background:#f8fafc;border-radius:9px;padding:11px;margin-bottom:9px}
+.rsec{margin-bottom:13px}
+.rsec h4{font-size:0.82rem;font-weight:800;color:#0f172a;margin-bottom:6px;padding-bottom:3px;border-bottom:2px solid #0f3460}
+.rgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:5px;margin-bottom:7px}
+.rc{background:white;border-radius:7px;padding:8px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.rc .rn{font-size:1.25rem;font-weight:800}.rc .rl{font-size:0.65rem;color:#64748b;margin-top:2px}
+.rtbl{width:100%;border-collapse:collapse;font-size:0.76rem;background:white;border-radius:7px;overflow:hidden}
+.rtbl th{background:#0f3460;color:white;padding:6px 7px;text-align:left;font-size:0.72rem}
+.rtbl td{padding:5px 7px;border-bottom:1px solid #f0f0f0}
+.rtbl tr:nth-child(even) td{background:#f8fafc}
+.rpb{width:100%;background:#16a34a;color:white;border:none;border-radius:7px;padding:9px;font-weight:700;font-size:0.82rem;cursor:pointer;margin-top:5px}
+.rpb2{width:100%;background:#25d366;color:white;border:none;border-radius:7px;padding:9px;font-weight:700;font-size:0.82rem;cursor:pointer;margin-top:5px}
+.srh{background:#0f3460;color:white;padding:13px;border-radius:9px;margin-bottom:11px;text-align:center}
+.srh h2{font-size:.95rem;font-weight:900}.srh p{font-size:0.74rem;opacity:.85;margin-top:2px}
+.srst{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-bottom:11px}
+.srsc{background:#f8fafc;border-radius:7px;padding:8px;text-align:center;border:1px solid #e2e8f0}
+.srsc .n{font-size:1.2rem;font-weight:900;color:#0f3460}.srsc .l{font-size:0.65rem;color:#64748b;margin-top:2px}
+.pb{background:#f0fdf4;border-radius:7px;padding:9px;margin-bottom:10px;text-align:center}
+.pb .pn{font-size:1.6rem;font-weight:900;color:#0f3460}.pb .pl{font-size:0.75rem;color:#64748b}
+.pbar{background:#e2e8f0;border-radius:8px;height:7px;margin-top:5px;overflow:hidden}
+.pbar-f{background:linear-gradient(90deg,#16a34a,#059669);height:100%;border-radius:8px}
+.ul{max-height:180px;overflow-y:auto;margin-bottom:11px}
+.ui{display:flex;justify-content:space-between;align-items:center;padding:7px 9px;background:#f8fafc;border-radius:7px;margin-bottom:5px}
+.ui-n{font-weight:700;font-size:0.82rem}.ui-r{font-size:0.68rem;color:#64748b}
+.udel{background:#fee2e2;color:#be123c;border:none;border-radius:5px;padding:3px 7px;cursor:pointer;font-size:0.7rem;font-weight:700}
+.nis-btn-row{display:flex;flex-direction:column;gap:8px;margin-bottom:13px}
+.nis-btn{padding:11px;border:none;border-radius:9px;font-weight:800;cursor:pointer;font-size:0.85rem;line-height:1.4}
+@media print{body *{display:none!important}.wdoc,.wdoc *{display:block!important}.wdoc{padding:8mm;font-size:12pt;border:none}}
+@media(max-width:480px){.cards{grid-template-columns:1fr}}
+</style>
+
+<script type="module">
+import{initializeApp}from"https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import{getFirestore,doc,setDoc,getDoc,collection,getDocs,deleteDoc}from"https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import{getAuth,signInWithEmailAndPassword,createUserWithEmailAndPassword,onAuthStateChanged,signOut,sendPasswordResetEmail}from"https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+const cfg={apiKey:"AIzaSyBwyXKlV-U1i5fD1NqnVhDf-pOzeDfS92s",authDomain:"bhanipura-court-reminder.firebaseapp.com",projectId:"bhanipura-court-reminder",storageBucket:"bhanipura-court-reminder.firebasestorage.app",messagingSenderId:"219398442087",appId:"1:219398442087:web:ea09c3d78248ea95bb58c2"};
+const app=initializeApp(cfg);const db=getFirestore(app);const auth=getAuth(app);
+const WR=doc(db,'bhanipura','warrants');const SL=doc(db,'bhanipura','stafflist');const UC=collection(db,'users');
+window._fbSignIn=async(e,p)=>signInWithEmailAndPassword(auth,e,p);
+window._fbSignOut=async()=>signOut(auth);
+window._fbReset=async(e)=>sendPasswordResetEmail(auth,e);
+window._fbCreateUser=async(e,p)=>createUserWithEmailAndPassword(auth,e,p);
+window._fbSave=async function(r){try{const c={total:r.length,ts:new Date().toISOString()};for(let i=0;i<r.length;i+=100)c['c'+Math.floor(i/100)]=r.slice(i,i+100);await setDoc(WR,c);return true;}catch(e){return false;}};
+window._fbLoad=async function(){try{const s=await getDoc(WR);if(!s.exists())return null;const d=s.data();let a=[];for(let i=0;i*100<(d.total||0);i++){if(d['c'+i])a=a.concat(d['c'+i]);}return a.length?a:null;}catch(e){return null;}};
+window._fbSaveStaff=async(l)=>{try{await setDoc(SL,{list:l,ts:new Date().toISOString()});return true;}catch(e){return false;}};
+window._fbLoadStaff=async()=>{try{const s=await getDoc(SL);return s.exists()?s.data().list:null;}catch(e){return null;}};
+window._fbSaveUser=async(uid,d)=>{try{await setDoc(doc(db,'users',uid),d);return true;}catch(e){return false;}};
+window._fbGetUsers=async()=>{try{const s=await getDocs(UC);const u={};s.forEach(d=>u[d.id]=d.data());return u;}catch(e){return{};}};
+window._fbDelUser=async(uid)=>{try{await deleteDoc(doc(db,'users',uid));return true;}catch(e){return false;}};
+onAuthStateChanged(auth,u=>{window._curUser=u;if(window._onAuth)window._onAuth(u);});
+window._fbReady=true;if(window._onFbReady)window._onFbReady();
+</script>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div class="lw" id="lw">
+  <div class="lb">
+    <div class="ll"><div class="ico">⚖️</div><h1>BHANIPURA COURT REMINDER</h1><p>पुलिस थाना भानीपुरा — वारंट रजिस्टर</p></div>
+    <div class="ls">🔒 Secure Login — केवल अधिकृत कर्मियों के लिए</div>
+    <div class="lf"><label>📧 Email</label><input type="email" id="le" placeholder="your@email.com"></div>
+    <div class="lf"><label>🔑 Password</label><input type="password" id="lp" placeholder="पासवर्ड"></div>
+    <button class="lbtn" id="lbtn" onclick="doLogin()">🚀 Login करें</button>
+    <div class="lerr" id="lerr"></div>
+    <div class="lfgt" onclick="doReset()">पासवर्ड भूल गए?</div>
+  </div>
+</div>
+
+<!-- APP -->
+<div class="app" id="app">
+  <div class="hdr">
+    <div class="htop">
+      <div class="ht"><h1>⚖️ BHANIPURA COURT REMINDER</h1><p>पुलिस थाना भानीपुरा — वारंट रजिस्टर 2026</p></div>
+      <div class="hr"><div class="ubadge" id="ubadge">...</div><span class="lgo" onclick="doLogout()">Logout →</span></div>
+    </div>
+  </div>
+  <div class="stats" id="stats"></div>
+  <div class="todal" id="todal" onclick="setTab('today')"></div>
+  <div class="tabs">
+    <button class="tab on" onclick="setTab('pending')" id="tab-pending">⏳ Pending</button>
+    <button class="tab" onclick="setTab('today')" id="tab-today">📅 आज</button>
+    <button class="tab" onclick="setTab('BW')" id="tab-BW">🟢 BW जमानती</button>
+    <button class="tab" onclick="setTab('AW')" id="tab-AW">🔴 AW गिरफ्तारी</button>
+    <button class="tab" onclick="setTab('NOTICE')" id="tab-NOTICE">🟡 NOTICE/समन</button>
+    <button class="tab" onclick="setTab('done')" id="tab-done">✅ निस्तारित</button>
+    <button class="tab" onclick="setTab('all')" id="tab-all">📋 सभी</button>
+  </div>
+  <div class="ctrl">
+    <input class="sbox" id="srch" placeholder="🔍 नाम, मौसूल नं., व्यक्ति, न्यायालय खोजें..." oninput="render()">
+    <div class="arow">
+      <button class="btn badd" id="btnadd" onclick="openAdd()" style="display:none">➕ नया</button>
+      <button class="btn bcsv" onclick="exportCSV()">📥 CSV</button>
+      <button class="btn bmo" onclick="openMonthly()">📊 Monthly</button>
+      <button class="btn bsr" onclick="openSR()">👮 Staff Report</button>
+      <button class="btn bstf" id="btnstf" onclick="openStaff()" style="display:none">🧑‍✈️ Staff</button>
+      <button class="btn bus" id="btnus" onclick="openUsers()" style="display:none">🔑 Users</button>
+      <button class="btn bsv" onclick="saveFile()">💾 Save</button>
+      <span class="cbadge" id="cbadge">355</span>
+    </div>
+  </div>
+  <div class="cards" id="cards"></div>
+</div>
+<div class="toast" id="toast"></div>
+
+<!-- ADD/EDIT MODAL -->
+<div class="ovl" id="em">
+  <div class="modal">
+    <h3 id="etit">➕ नई एंट्री</h3>
+    <input type="hidden" id="eid">
+    <div class="fg2">
+      <div class="fg"><label>सरकार बनाम (अभियुक्त)</label><input id="fbn" placeholder="RAMESH KUMAR S/O..."></div>
+      <div class="fg"><label>प्रकार</label>
+        <select id="ft">
+          <option value="BW">BW — जमानती वारंट</option>
+          <option value="AW">AW — गिरफ्तारी वारंट</option>
+          <option value="NOTICE">NOTICE — समन</option>
+        </select>
+      </div>
+    </div>
+    <div class="fg"><label>FIR / केस नंबर</label><input id="fn" placeholder="45/2024"></div>
+    <div class="fg2">
+      <div class="fg"><label>मौसूल नंबर (FC)</label><input id="ffc" placeholder="FC 624"></div>
+      <div class="fg"><label>मुलाजिम / Staff</label>
+        <select id="fst" onchange="onStaffChange(this)">
+          <option value="">-- चुनें --</option>
+        </select>
+      </div>
+    </div>
+    <div class="fg"><label>न्यायालय</label>
+      <select id="fct" onchange="document.getElementById('fco').style.display=this.value==='OTHER'?'block':'none'">
+        <option value="">-- चुनें --</option>
+        <option value="JM SDS">JM SDS — न्यायिक मजिस्ट्रेट, सरदारशहर</option>
+        <option value="ACJM SDS">ACJM SDS — अति. मुख्य न्यायिक मजिस्ट्रेट</option>
+        <option value="ADJ SDS">ADJ SDS — अपर जिला एवं सेशन न्यायाधीश</option>
+        <option value="DJ COURT CHURU">DJ COURT CHURU — जिला एवं सेशन न्यायाधीश</option>
+        <option value="ADJ SC-ST CHURU">ADJ SC-ST CHURU — SC/ST न्यायालय</option>
+        <option value="JJB COURT CHURU">JJB COURT CHURU — किशोर न्याय बोर्ड</option>
+        <option value="ADJ S ELEC CHURU">ADJ S ELEC CHURU — विशिष्ट न्यायाधीश विद्युत, चूरू</option>
+        <option value="POCSO COURT CHURU">POCSO COURT CHURU — पॉकसो न्यायालय, चूरू</option>
+        <option value="OTHER">अन्य न्यायालय (नीचे लिखें)...</option>
+      </select>
+    </div>
+    <div class="fg" id="fco" style="display:none"><label>अन्य न्यायालय का नाम</label><input id="fct2" placeholder="न्यायालय का नाम लिखें"></div>
+    <div class="fg">
+      <label style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
+        <span>अभियुक्त / वारंटी / साक्षी</span>
+        <button type="button" onclick="addAccused()" style="background:#0f3460;color:white;border:none;border-radius:6px;padding:3px 10px;font-size:0.72rem;font-weight:700;cursor:pointer">➕ और जोड़ें</button>
+      </label>
+      <div id="acc-list"></div>
+    </div>
+    <div class="fg" style="background:#f0f4ff;border-radius:8px;padding:9px;margin-bottom:8px">
+      <label style="font-weight:700;font-size:0.76rem;color:#0f3460;margin-bottom:6px;display:block">👮 क्या वारंटी/साक्षी पुलिस कर्मी है?</label>
+      <div style="display:flex;gap:6px;margin-bottom:7px">
+        <label style="display:flex;align-items:center;gap:4px;font-size:0.8rem"><input type="radio" name="acc-type" value="civilian" checked onchange="togglePoliceFields(this)"> नागरिक / Civilian</label>
+        <label style="display:flex;align-items:center;gap:4px;font-size:0.8rem"><input type="radio" name="acc-type" value="police" onchange="togglePoliceFields(this)"> पुलिस कर्मी</label>
+        <label style="display:flex;align-items:center;gap:4px;font-size:0.8rem"><input type="radio" name="acc-type" value="retired" onchange="togglePoliceFields(this)"> रिटायर्ड</label>
+      </div>
+      <div id="police-fields" style="display:none">
+        <div class="fg2">
+          <div class="fg"><label>पद / Designation</label><input id="fp-rank" placeholder="ASI / HC / FC"></div>
+          <div class="fg"><label>हाल पदस्थापन</label><input id="fp-post" placeholder="PS BHANIPURA"></div>
+        </div>
+      </div>
+      <div id="retired-fields" style="display:none">
+        <div class="fg"><label>निवास / गांव (रिटायर्ड)</label><input id="fp-village" placeholder="गांव / मोहल्ला, जिला"></div>
+      </div>
+    </div>
+    <div class="fg2">
+      <div class="fg"><label>प्राप्ति दिनांक</label><input id="fdr" placeholder="DD.MM.YYYY"></div>
+      <div class="fg"><label>पेशी की तारीख</label><input id="fnd" placeholder="DD.MM.YYYY"></div>
+    </div>
+    <div class="fg"><label>मोबाइल नंबर (आरोपी)</label><input id="fm" placeholder="10 अंक" maxlength="10" type="tel"></div>
+    <div class="fg"><label>नोट्स</label><textarea id="fno" rows="2" style="resize:none" placeholder="टिप्पणी..."></textarea></div>
+    <div class="mbs">
+      <button class="btn bsave" onclick="saveRec()">💾 सहेजें</button>
+      <button class="btn bcan" onclick="closeM('em')">❌ रद्द</button>
+    </div>
+  </div>
+</div>
+
+<!-- NISTHARAN MODAL -->
+<div class="ovl" id="nism">
+  <div class="modal" style="max-width:340px">
+    <h3>✅ वारंट निस्तारण</h3>
+    <div style="text-align:center;margin-bottom:13px">
+      <div id="nis-name" style="font-weight:800;font-size:0.9rem;color:#0f172a;margin-bottom:4px"></div>
+      <div id="nis-info" style="font-size:0.78rem;color:#64748b"></div>
+    </div>
+    <div style="font-weight:700;font-size:0.82rem;margin-bottom:9px;color:#166534">निस्तारण का प्रकार चुनें:</div>
+    <div class="nis-btn-row">
+      <button class="nis-btn" style="background:#16a34a;color:white" onclick="confirmNis('बाद तामिल')">✅ बाद तामिल<br><small style="font-weight:400;font-size:0.72rem">वारंट तामिल हो गया — व्यक्ति मिला</small></button>
+      <button class="nis-btn" style="background:#dc2626;color:white" onclick="confirmNis('अदम तामिल')">❌ अदम तामिल<br><small style="font-weight:400;font-size:0.72rem">वारंट तामिल नहीं हुआ — व्यक्ति नहीं मिला</small></button>
+      <button class="nis-btn" style="background:#d97706;color:white" onclick="confirmNis('जमानत पर रिहा')">🔑 जमानत पर रिहा<br><small style="font-weight:400;font-size:0.72rem">जमानत स्वीकार हुई</small></button>
+      <button class="nis-btn" style="background:#7c3aed;color:white" onclick="confirmNis('गिरफ्तार किया')">🚔 गिरफ्तार किया<br><small style="font-weight:400;font-size:0.72rem">अभियुक्त गिरफ्तार</small></button>
+    </div>
+    <button class="btn bcan" style="width:100%;padding:9px" onclick="closeM('nism')">❌ रद्द</button>
+  </div>
+</div>
+
+<!-- WARRANT MODAL -->
+<div class="wovl" id="wm">
+  <div class="wbox">
+    <div class="wtb">
+      <button class="btn bsave" onclick="printWarrant()">🖨️ Print वारंट</button>
+      <button class="btn" style="background:#6366f1;color:white" onclick="genPoliceEmail()">📧 पुलिस पत्र</button>
+      <button class="btn bcan" onclick="closeM('wm')">❌ बंद</button>
+    </div>
+    <div id="winfo" style="background:#f0f4ff;border-radius:7px;padding:8px 10px;margin-bottom:9px;font-size:0.78rem;line-height:1.7"></div>
+    <div class="wsetup">
+      <div style="font-weight:800;margin-bottom:7px;font-size:0.88rem">⚖️ वारंट प्रकार:</div>
+      <div class="wtypes">
+        <button class="wt on" id="wt-BW" onclick="selWT('BW')">🟢 जमानती<br><small>BW</small></button>
+        <button class="wt" id="wt-AW" onclick="selWT('AW')">🔴 गिरफ्तारी<br><small>AW</small></button>
+        <button class="wt" id="wt-SUMMON" onclick="selWT('SUMMON')">📋 समन<br><small>Notice</small></button>
+      </div>
+      <div class="bxb" id="bailbox">
+        <label>💰 जमानत राशि (₹):</label>
+        <input type="number" id="ba" placeholder="जैसे: 5000" oninput="if(wdw.innerHTML)genW()">
+        <div style="margin-top:5px;font-size:0.76rem"><label><input type="checkbox" id="bp" checked onchange="if(wdw.innerHTML)genW()"> + व्यक्तिगत बंधपत्र</label></div>
+      </div>
+      <div class="fg2" style="margin-bottom:6px">
+        <div class="fg"><label>आयु</label><input id="wa" placeholder="35 वर्ष"></div>
+        <div class="fg"><label>पिता का नाम</label><input id="wf" placeholder="पिता का नाम"></div>
+      </div>
+      <div class="fg" style="margin-bottom:6px"><label>पूरा पता</label><input id="wad" placeholder="ग्राम/मोहल्ला, जिला..."></div>
+      <div class="fg" style="margin-bottom:9px"><label>धारा / Section</label><input id="wdh" value="341 IPC"></div>
+      <button class="btn bsave" style="width:100%;padding:9px;font-size:0.86rem" onclick="genW()">📄 वारंट बनाएं</button>
+    </div>
+    <div id="wdw"></div>
+  </div>
+</div>
+
+<!-- MONTHLY REPORT -->
+<div class="ovl" id="mm">
+  <div class="modal" style="max-width:540px">
+    <h3>📊 Monthly Report</h3>
+    <div style="display:flex;gap:6px;margin-bottom:11px">
+      <select id="rmo" style="flex:1;padding:7px;border:1.5px solid #e2e8f0;border-radius:7px;font-size:0.82rem">
+        <option value="0">जनवरी</option><option value="1">फरवरी</option><option value="2">मार्च</option><option value="3">अप्रैल</option><option value="4">मई</option><option value="5">जून</option><option value="6">जुलाई</option><option value="7">अगस्त</option><option value="8">सितंबर</option><option value="9">अक्टूबर</option><option value="10">नवंबर</option><option value="11">दिसंबर</option>
+      </select>
+      <select id="ryr" style="flex:1;padding:7px;border:1.5px solid #e2e8f0;border-radius:7px;font-size:0.82rem">
+        <option value="2025">2025</option><option value="2026" selected>2026</option>
+      </select>
+      <button onclick="genRpt()" style="background:#0f3460;color:white;border:none;border-radius:7px;padding:7px 13px;font-weight:700;cursor:pointer;font-size:0.8rem">देखें</button>
+    </div>
+    <div style="max-height:60vh;overflow-y:auto" id="ro"></div>
+    <div class="mbs" style="margin-top:7px"><button class="btn bcan" onclick="closeM('mm')">❌ बंद</button></div>
+  </div>
+</div>
+
+<!-- STAFF REPORT -->
+<div class="ovl" id="srm">
+  <div class="modal" style="max-width:560px">
+    <h3>👮 Staff Report</h3>
+    <div style="display:flex;gap:6px;margin-bottom:11px">
+      <select id="srs" style="flex:1;padding:7px;border:1.5px solid #e2e8f0;border-radius:7px;font-size:0.82rem">
+        <option value="">-- Staff चुनें --</option>
+      </select>
+      <select id="srt" style="flex:1;padding:7px;border:1.5px solid #e2e8f0;border-radius:7px;font-size:0.82rem">
+        <option value="all">सभी प्रकार</option><option value="BW">BW जमानती</option><option value="AW">AW गिरफ्तारी</option><option value="NOTICE">NOTICE समन</option>
+      </select>
+      <button onclick="genSR()" style="background:#0f3460;color:white;border:none;border-radius:7px;padding:7px 13px;font-weight:700;cursor:pointer;font-size:0.8rem">देखें</button>
+    </div>
+    <div style="max-height:65vh;overflow-y:auto" id="sro"></div>
+    <div class="mbs" style="margin-top:7px"><button class="btn bcan" onclick="closeM('srm')">❌ बंद</button></div>
+  </div>
+</div>
+
+<!-- STAFF MANAGEMENT -->
+<div class="ovl" id="stfm">
+  <div class="modal">
+    <h3>🧑‍✈️ Staff प्रबंधन</h3>
+    <div id="stf-list" style="max-height:200px;overflow-y:auto;margin-bottom:10px"></div>
+    <div style="background:#f8fafc;border-radius:9px;padding:11px">
+      <div style="font-weight:800;font-size:0.82rem;margin-bottom:9px;color:#0f3460">➕ नया Staff जोड़ें</div>
+      <div class="fg2">
+        <div class="fg"><label>नाम</label><input id="snm" placeholder="PAWAN KUMAR"></div>
+        <div class="fg"><label>मौसूल नं. (FC)</label><input id="sfc" placeholder="FC 478"></div>
+      </div>
+      <div class="fg"><label>📱 Mobile (WhatsApp) — देश कोड सहित</label><input id="sph" placeholder="919549070962" type="tel"></div>
+      <button class="btn bsave" style="width:100%;padding:9px;margin-top:4px" onclick="addStaff()">➕ Staff जोड़ें</button>
+    </div>
+    <div class="mbs" style="margin-top:9px"><button class="btn bcan" onclick="closeM('stfm')">❌ बंद</button></div>
+  </div>
+</div>
+
+<!-- USER MANAGEMENT -->
+<div class="ovl" id="um">
+  <div class="modal">
+    <h3>🔑 User Management</h3>
+    <div class="ul" id="ul"></div>
+    <div style="background:#f8fafc;border-radius:9px;padding:11px">
+      <div style="font-weight:800;font-size:0.82rem;margin-bottom:9px">➕ नया Login User</div>
+      <div class="fg"><label>Email</label><input id="nue" type="email" placeholder="staff@email.com"></div>
+      <div class="fg"><label>Password (6+)</label><input id="nup" type="password" placeholder="पासवर्ड"></div>
+      <div class="fg2">
+        <div class="fg"><label>नाम</label><input id="nun" placeholder="PAWAN"></div>
+        <div class="fg"><label>FC नंबर</label><input id="nufc" placeholder="FC 478"></div>
+      </div>
+      <div class="fg"><label>Role</label>
+        <select id="nur"><option value="staff">Staff (सिर्फ अपने वारंट)</option><option value="admin">Admin (सब कुछ)</option></select>
+      </div>
+      <button class="btn bsave" style="width:100%;padding:9px;margin-top:4px" onclick="addUser()">➕ User बनाएं</button>
+      <div id="uerr" style="color:#dc2626;font-size:0.76rem;margin-top:6px;text-align:center"></div>
+    </div>
+    <div class="mbs" style="margin-top:9px"><button class="btn bcan" onclick="closeM('um')">❌ बंद</button></div>
+  </div>
+</div>
+
+<script>
+const CM={"JM SDS":"न्यायिक मजिस्ट्रेट, सरदारशहर","ACJM SDS":"अति. मुख्य न्यायिक मजिस्ट्रेट, सरदारशहर","ADJ SDS":"अपर जिला एवं सेशन न्यायाधीश, सरदारशहर","DJ COURT CHURU":"जिला एवं सेशन न्यायाधीश, जिला चूरू","ADJ SC-ST CHURU":"अपर जिला न्यायाधीश (SC/ST), चूरू","ADJ SC ST CHURU":"अपर जिला न्यायाधीश (SC/ST), चूरू","JJB COURT CHURU":"किशोर न्याय बोर्ड, चूरू","ADJ S ELEC CHURU":"विशिष्ट न्यायाधीश विद्युत, चूरू","ADJ SP. ELE. CHURU":"विशिष्ट न्यायाधीश विद्युत, चूरू","POCSO COURT CHURU":"पॉकसो न्यायालय, चूरू"};
+const MH=['जनवरी','फरवरी','मार्च','अप्रैल','मई','जून','जुलाई','अगस्त','सितंबर','अक्टूबर','नवंबर','दिसंबर'];
+const KEY='bcr_v7';
+const INIT=[{"id":1,"name":"BHAWANI SINGH (50/2015)","type":"NOTICE","fc":"FC 1302","staff":"MOOLCHAND","prevStaff":"L","court":"ADJ SDS","person":"H NOTICE MANOJ KUMAR BUKANSAR","dateReceived":"12.01.2026","nextDate":"11.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":2,"name":"SHER SINGH (339/17)","type":"AW","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"ACJM SDS","person":"SHER SINGH RO PANDREU TAL","dateReceived":"12.02.2026","nextDate":"11.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":3,"name":"AMILAL (718/2022)","type":"BW","fc":"FC 772","staff":"SURENDAR","prevStaff":"","court":"JM SDS","person":"MAHENDAR S/O GOMAD R/O KOLAYAT","dateReceived":"20.02.2026","nextDate":"11.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":4,"name":"MADANLAL (431/2015)","type":"BW","fc":"FC 487","staff":"ANIL","prevStaff":"","court":"JM SDS","person":"RAMLAL R/O RANASAR PANWARAN","dateReceived":"20.02.2026","nextDate":"11.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":5,"name":"AMILAL (718/2022)","type":"AW","fc":"FC 772","staff":"SURENDAR","prevStaff":"","court":"JM SDS","person":"AMILAL R/O KOLAYAT","dateReceived":"20.02.2026","nextDate":"11.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":6,"name":"AMILAL (718/2022)","type":"AW","fc":"FC 772","staff":"SURENDAR","prevStaff":"","court":"JM SDS","person":"GOMAD RO KOLAYAT","dateReceived":"20.02.2026","nextDate":"11.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":7,"name":"AMILAL (718/2022)","type":"AW","fc":"FC 772","staff":"SURENDAR","prevStaff":"","court":"JM SDS","person":"BANWARI RO KOLAYAT","dateReceived":"20.02.2026","nextDate":"11.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":8,"name":"AMILAL (718/2022)","type":"AW","fc":"FC 772","staff":"SURENDAR","prevStaff":"","court":"JM SDS","person":"MUKESH RO KOLAYAT","dateReceived":"20.02.2026","nextDate":"11.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":9,"name":"MADANLAL (431/2015)","type":"AW","fc":"FC 772","staff":"SURENDAR","prevStaff":"","court":"JM SDS","person":"KASHYAP SINGH SI","dateReceived":"20.02.2026","nextDate":"11.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":10,"name":"GOPALRAM","type":"BW","fc":"FC 624","staff":"RAMESH","prevStaff":"","court":"ADJ SDS","person":"KULDEEP FC 1098","dateReceived":"25.02.2026","nextDate":"11.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":11,"name":"GOPALRAM (42/24)","type":"AW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ADJ SDS","person":"HARENDAR FC 735, SUBHASH HC 58, ANIL KUMAR FC 1178","dateReceived":"25.02.2026","nextDate":"11.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":12,"name":"PRAVIN ETC (416/2025)","type":"AW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"JM SDS","person":"MALARAM RO BIRAWA BARMER","dateReceived":"30.01.2026","nextDate":"12.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":13,"name":"RAKESH (884/2023)","type":"AW","fc":"FC 772","staff":"SURENDAR","prevStaff":"","court":"JM SDS","person":"RAKESH UDSAR LODERA SDS","dateReceived":"30.01.2026","nextDate":"12.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":14,"name":"BHADARRAM (804/2021)","type":"AW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"JM SDS","person":"BHADARRAM URF BHADAR RO SHIMLA","dateReceived":"30.01.2026","nextDate":"12.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":15,"name":"SHAYAR SINGH (35/25)","type":"AW","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"ADJ SDS","person":"SHANTI DEVI, RAJU, SHUBHKARAN","dateReceived":"02.02.2026","nextDate":"12.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":16,"name":"BHAGA VS KELASH (622/25)","type":"NOTICE","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"JM SDS NIA ACT","person":"KELASH RO RANSISAR","dateReceived":"06.02.2026","nextDate":"12.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":17,"name":"JATINDAR SINGH VGERH (37/2016)","type":"AW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"ACJM SDS","person":"MANJIT SINGH RO KOT ISE KHAN","dateReceived":"20.02.2026","nextDate":"12.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":18,"name":"JATINDAR SINGH VGERH (37/2016)","type":"AW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"ACJM SDS","person":"JATINDAR SINGH RO JINWAL","dateReceived":"20.02.2026","nextDate":"12.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":19,"name":"MADANLAL (32/25)","type":"AW","fc":"FC 1247","staff":"BHADAR RAM","prevStaff":"","court":"ADJ SDS","person":"PIRTHA RAM, DHANNI DEVI, MEGHARAM","dateReceived":"26.02.2026","nextDate":"12.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":20,"name":"MADANLAL (32/25)","type":"AW","fc":"FC 1247","staff":"BHADAR RAM","prevStaff":"","court":"ADJ SDS","person":"MEERA RO RAJASAR PANWARAN","dateReceived":"26.02.2026","nextDate":"12.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":21,"name":"GAMESH ETC(39/21)","type":"BW","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"ADJ SDS","person":"SURESH , PRITAM ,SURESH","dateReceived":"24.01.2026","nextDate":"13.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":22,"name":"DINESH (25/22)","type":"BW","fc":"FC 478","staff":"PAWAN","prevStaff":"173","court":"ADJ SDS","person":"OMPRAKASH HC, RAMESH HC","dateReceived":"24.01.2026","nextDate":"13.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":23,"name":"JAGSEER SINGH (598/2015)","type":"BW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"JM SDS","person":"JAGSEER SINGH RO KOT FATTA PB","dateReceived":"06.02.2026","nextDate":"13.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":24,"name":"NANURAM (867//2023)","type":"AW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"JM SDS","person":"NANURAM URF DARA RO 1TKW","dateReceived":"30.01.2026","nextDate":"13.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":25,"name":"ANJOT SINGH(34/24)","type":"AW","fc":"FC 1247","staff":"BHADAR RAM","prevStaff":"","court":"ADJ SDS","person":"JAGDISH SINGH R/O BHOJASAR CHHOTA, RAJENDER ASI","dateReceived":"07.03.2026","nextDate":"13.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":26,"name":"KALURAM (154/24)","type":"AW","fc":"FC 1024","staff":"DHARMENDRA","prevStaff":"","court":"ADJ S ELEC CHURU","person":"KALURAM RO RAMSISAR","dateReceived":"06.02.2026","nextDate":"16.03.2026","mobile":"","notes":"","status":"pending"},{"id":27,"name":"DINDYAL (513/2020)","type":"BW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"ACJM SDS","person":"PRAVIN HC 05, RAMCHANDAR HC 69, SANDEEP FC 794","dateReceived":"20.02.2026","nextDate":"16.03.2026","mobile":"","notes":"","status":"pending"},{"id":28,"name":"BANAR SINGH (266/20)","type":"BW","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"ACJM SDS","person":"SARJEET R/O SHEIKHPURIYA","dateReceived":"20.02.2026","nextDate":"16.03.2026","mobile":"","notes":"","status":"pending"},{"id":29,"name":"HARIRAM (979/2019)","type":"BW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"JM SDSJJB CHURU","person":"HETRAM AND 3 OTHERS, TARSEM HC","dateReceived":"29.01.2026","nextDate":"17.03.2026","mobile":"","notes":"","status":"pending"},{"id":30,"name":"SANDEEP SINGH (869/2023)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"JM SDS","person":"SUMAN KANWAR, GOURAV KHIRIYA SI","dateReceived":"29.01.2026","nextDate":"17.03.2026","mobile":"","notes":"","status":"pending"},{"id":31,"name":"KRISHANLAL (406/2018)","type":"BW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"JM SDS","person":"MADANLAL KELNIA , SHYAM JI HC","dateReceived":"06.02.2026","nextDate":"17.03.2026","mobile":"","notes":"","status":"pending"},{"id":32,"name":"VIKASH VGERH (118/21)","type":"AW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ADJ SDS","person":"SUBHASH CHANDRA SI","dateReceived":"21.01.2026","nextDate":"17.03.2026","mobile":"","notes":"","status":"pending"},{"id":33,"name":"TARACHAND (78/24)","type":"AW","fc":"FC 1024","staff":"DHARMENDRA","prevStaff":"","court":"ADJ SC ST CHURU","person":"SURESH KUMAR RO MALAKSAR","dateReceived":"25.02.2026","nextDate":"17.03.2026","mobile":"","notes":"","status":"pending"},{"id":34,"name":"TULCHHARAM (527/20)","type":"NOTICE","fc":"FC 772","staff":"SURENDAR","prevStaff":"","court":"ACJM SDS","person":"JATAN LAL DEWASAR, RAJENDER BILYU BAS RAMPURA","dateReceived":"26.02.2026","nextDate":"17.03.2026","mobile":"","notes":"","status":"pending"},{"id":35,"name":"AMIT KUMAR (13/2016)","type":"BW","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"ACJM SDS","person":"HARDEEP FC 891, RAJENDER FC 668","dateReceived":"26.02.2026","nextDate":"17.03.2026","mobile":"","notes":"","status":"pending"},{"id":36,"name":"SHANKARLAL (11/24)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ADJ SDS","person":"DR. CHANDAN MOTHSARA","dateReceived":"05.01.2026","nextDate":"18.03.2026","mobile":"","notes":"","status":"pending"},{"id":37,"name":"DINDYAL VGERH (375/19)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"JM SDS","person":"HC 69, FC 1413, FC 258","dateReceived":"29.01.2026","nextDate":"18.03.2026","mobile":"","notes":"","status":"pending"},{"id":38,"name":"KULDEEP (272/2019)","type":"BW","fc":"FC 487","staff":"ANIL","prevStaff":"","court":"JM SDS","person":"INDRA, BHUPJI, BALWANTI, SARDUL","dateReceived":"02.02.2026","nextDate":"18.03.2026","mobile":"","notes":"","status":"pending"},{"id":39,"name":"MOTI SINGH (24/2019)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"JM SDS","person":"SULTAN HC ,RAJVIR FC,RAMCHNDR HC","dateReceived":"06.02.2026","nextDate":"18.03.2026","mobile":"","notes":"","status":"pending"},{"id":40,"name":"SHANKARLAL VGERH (04/24)","type":"AW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ADJ SDS","person":"DR. KISHAN SIHAG","dateReceived":"05.01.2026","nextDate":"18.03.2026","mobile":"","notes":"","status":"pending"},{"id":41,"name":"SHIV AADI (48/21)(21/21)","type":"BW","fc":"FC 1058","staff":"MANISH KUMAR","prevStaff":"","court":"ADJ SDS","person":"PRITHVI SINGH, KRISHAN SAWAR, RANVEER SINGH SAWAR","dateReceived":"12.02.2026","nextDate":"18.03.2026","mobile":"","notes":"","status":"pending"},{"id":42,"name":"HANUMANARAM ETC (169/20","type":"NOTICE","fc":"FC 1024","staff":"DHARMENDRA","prevStaff":"","court":"ACJM SDS","person":"GOMADNATH RO MALAKSAR","dateReceived":"26.02.2026","nextDate":"18.03.2026","mobile":"","notes":"","status":"pending"},{"id":43,"name":"KAMLESH VGERH (44/22)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ADJ SDS","person":"SUBHASH SI, JAISINGH","dateReceived":"12.01.2026","nextDate":"19.03.2026","mobile":"","notes":"","status":"pending"},{"id":44,"name":"KARAMJEET (53/22)","type":"BW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"ADJ SDS","person":"FC 1368, MALKIT SI","dateReceived":"12.01.2026","nextDate":"19.03.2026","mobile":"","notes":"","status":"pending"},{"id":45,"name":"LAXMINARAYAN (63/23)","type":"BW","fc":"FC 487","staff":"ANIL","prevStaff":"","court":"ADJ SC-ST CHURU","person":"KAMLA JAITASAR","dateReceived":"24.01.2026","nextDate":"19.03.2026","mobile":"","notes":"","status":"pending"},{"id":46,"name":"LAXMINARAYAN (63/23)","type":"BW","fc":"FC 487","staff":"ANIL","prevStaff":"","court":"ADJ SC-ST CHURU","person":"RAMLAL JAITASAR","dateReceived":"24.01.2026","nextDate":"19.03.2026","mobile":"","notes":"","status":"pending"},{"id":47,"name":"DHARMINDER SINGH (37/24)","type":"AW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"ADJ SDS","person":"DHARMINDER SINGH FARIDKHERA","dateReceived":"24.01.2026","nextDate":"19.03.2026","mobile":"","notes":"","status":"pending"},{"id":48,"name":"IMILAL GIR ETC (27/2020)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ADJ SC ST CHURU","person":"GIRDHARI LAL CO SDS","dateReceived":"07.03.2026","nextDate":"19.03.2026","mobile":"","notes":"","status":"pending"},{"id":49,"name":"GOPIRAM ETC (698/2019)","type":"NOTICE","fc":"FC 1178","staff":"ANIL","prevStaff":"","court":"JM SDS","person":"MANIRAM RO RATUSAR","dateReceived":"23.01.2026","nextDate":"21.03.2026","mobile":"","notes":"","status":"pending"},{"id":50,"name":"AMIT KUMAR (559/2018)","type":"BW","fc":"FC 487","staff":"ANIL","prevStaff":"","court":"JM SDS","person":"RAMNIWAS , SHRWAN AND 2 OTHERS","dateReceived":"02.02.2026","nextDate":"23.03.2026","mobile":"","notes":"","status":"pending"},{"id":51,"name":"MADANGAR VGERH (819/2017)","type":"BW","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"ACJM SDS","person":"PUNAM SINGH, BHANWAR GAR, DR. CHANDRA BHAN","dateReceived":"07.03.2026","nextDate":"23.03.2026","mobile":"","notes":"","status":"pending"},{"id":52,"name":"SOHANLAL (267/20)","type":"NOTICE","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"ACJM SDS","person":"OM SINGH, VISHAL SINGH RO BHOJASAR CHHOTA, DR RAJESH GUPTA, DINESH HC MTO, MALKIYAT SI","dateReceived":"07.03.2026","nextDate":"23.03.2026","mobile":"","notes":"","status":"pending"},{"id":53,"name":"GURWINDER SINGH(64/22)","type":"BW","fc":"FC 624","staff":"RAMESH","prevStaff":"","court":"ADJ SDS","person":"VINOD HC 2044 AND ANIL(CIVIL)","dateReceived":"05.01.2026","nextDate":"24.03.2026","mobile":"","notes":"","status":"pending"},{"id":54,"name":"RAMCHANDAR (06/2023)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ADJ SDS","person":"SUBHASH SI","dateReceived":"12.01.2026","nextDate":"24.03.2026","mobile":"","notes":"","status":"pending"},{"id":55,"name":"JASNATH (04/2024)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ADJ SDS","person":"GOURAV SHO, RATANLAL SI","dateReceived":"12.01.2026","nextDate":"24.03.2026","mobile":"","notes":"","status":"pending"},{"id":56,"name":"AMANPREET (421/19)","type":"BW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"JM SDS","person":"YAKUB BHADRA","dateReceived":"24.01.2026","nextDate":"24.03.2026","mobile":"","notes":"","status":"pending"},{"id":57,"name":"AMANPREET (421/19)","type":"BW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"JM SDS","person":"DINDYAL NOHAR","dateReceived":"24.01.2026","nextDate":"24.03.2026","mobile":"","notes":"","status":"pending"},{"id":58,"name":"AMANPREET (421/19)","type":"BW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"JM SDS","person":"MAHAVEER KARANPURA","dateReceived":"24.01.2026","nextDate":"24.03.2026","mobile":"","notes":"","status":"pending"},{"id":59,"name":"AMANPREET (421/19)","type":"BW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"JM SDS","person":"AMILAL KARANPURA","dateReceived":"24.01.2026","nextDate":"24.03.2026","mobile":"","notes":"","status":"pending"},{"id":60,"name":"LAXMAN GIRI (974/2019)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"JM SDS","person":"SHARDA, SAJAN, MALKIYAT SI","dateReceived":"29.01.2026","nextDate":"24.03.2026","mobile":"","notes":"","status":"pending"},{"id":61,"name":"HARPREET SINGH (65/22)","type":"AW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"ADJ SDS","person":"HARPREET SINGH SABHRAN","dateReceived":"24.01.2026","nextDate":"24.03.2026","mobile":"","notes":"","status":"pending"},{"id":62,"name":"HARPREET SINGH (65/22)","type":"AW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"ADJ SDS","person":"JARNEL SINGH SARAN BALTOHA","dateReceived":"24.01.2026","nextDate":"24.03.2026","mobile":"","notes":"","status":"pending"},{"id":63,"name":"AMANPREET (421/2019)","type":"AW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"JM SDS","person":"YAKUB KHAN BHADRA","dateReceived":"30.01.2026","nextDate":"24.03.2026","mobile":"","notes":"","status":"pending"},{"id":64,"name":"SHYAMLAL ETC (28/2018)","type":"BW","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"JM SDS","person":"MOTARAM, DEVILAL, KALURAM, DHUPARAM R/O JAITSISAR","dateReceived":"20.02.2026","nextDate":"24.03.2026","mobile":"","notes":"","status":"pending"},{"id":65,"name":"SHYAMLAL ETC (28/2018)","type":"AW","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"JM SDS","person":"OMPRAKASH RO JAITSISAR","dateReceived":"20.02.2026","nextDate":"24.03.2026","mobile":"","notes":"","status":"pending"},{"id":66,"name":"JAYLAL VGERH (8/23)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ADJ SDS","person":"DR. PK PEDIWAL, SUBHASH SI","dateReceived":"07.03.2026","nextDate":"24.03.2026","mobile":"","notes":"","status":"pending"},{"id":67,"name":"MANPREET SINGH (587/2024)","type":"BW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"JM SDS","person":"MANPREET SINGH MUKTSAR PB","dateReceived":"02.02.2026","nextDate":"25.03.2026","mobile":"","notes":"","status":"pending"},{"id":68,"name":"RAMSWARUP (154/19)","type":"AW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"ADJ SDS","person":"MALKIYAT SI","dateReceived":"24.01.2026","nextDate":"25.03.2026","mobile":"","notes":"","status":"pending"},{"id":69,"name":"KAMLESH ETC (561/2024)","type":"AW","fc":"FC 1178","staff":"ANIL","prevStaff":"","court":"JM SDS","person":"VIKASH KUMAR RO RATUSAR","dateReceived":"08.02.2026","nextDate":"25.03.2026","mobile":"","notes":"","status":"pending"},{"id":70,"name":"MAYANK VGERH (676/2022)","type":"AW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"JM SDS","person":"MAYANK R/O GODHUWALI GANGANAGAR","dateReceived":"20.02.2026","nextDate":"25.03.2026","mobile":"","notes":"","status":"pending"},{"id":71,"name":"SHIVRATAN (281/2017)","type":"NOTICE","fc":"FC 772","staff":"SURENDAR","prevStaff":"","court":"ACJM SDS","person":"MAHESH KUMAR AND VINOD KUMAR FROM SSP COPYRIGHT C S P L JAIPUR","dateReceived":"26.02.2026","nextDate":"25.03.2026","mobile":"","notes":"","status":"pending"},{"id":72,"name":"AAIDAN VGERH (152/17)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ACJM SDS","person":"RAJVEER SINGH SI","dateReceived":"07.03.2026","nextDate":"25.03.2026","mobile":"","notes":"","status":"pending"},{"id":73,"name":"ROHIT KUMAR (512/20)","type":"NOTICE","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"ACJM SDS","person":"OM PRAKASH HC 2001, RICHHPAL ASI RTD, MALKIYAT SINGH SI","dateReceived":"07.03.2026","nextDate":"25.03.2026","mobile":"","notes":"","status":"pending"},{"id":74,"name":"VISHNU ETC (99/2021)","type":"BW","fc":"FC 487","staff":"ANIL","prevStaff":"","court":"ADJ SDS","person":"NARAYAN BAJIYA RPS","dateReceived":"02.02.2026","nextDate":"27.03.2026","mobile":"","notes":"","status":"pending"},{"id":75,"name":"RAJIRAM (04/2019)","type":"AW","fc":"FC 772","staff":"SURENDAR","prevStaff":"","court":"JM SDS","person":"BHIKHARAM AMRASAR","dateReceived":"30.01.2026","nextDate":"27.03.2026","mobile":"","notes":"","status":"pending"},{"id":76,"name":"RAJIRAM (04/2019)","type":"AW","fc":"FC 772","staff":"SURENDAR","prevStaff":"","court":"JM SDS","person":"IMILAL AMRASAR","dateReceived":"30.01.2026","nextDate":"27.03.2026","mobile":"","notes":"","status":"pending"},{"id":77,"name":"SAWAI SINGH (44/2024)","type":"BW","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"ADJ SDS","person":"SANDEEP FC 800, RAJENDER FC 1137","dateReceived":"07.03.2026","nextDate":"27.03.2026","mobile":"","notes":"","status":"pending"},{"id":78,"name":"SWAI SINGH (44/24)","type":"AW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ADJ SDS","person":"SUBHASH HC 58","dateReceived":"07.03.2026","nextDate":"27.03.2026","mobile":"","notes":"","status":"pending"},{"id":79,"name":"ASHOK KUMAR (200/2022)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ADJ SC ST CHURU","person":"NARENDAR SHARMA CO SDS","dateReceived":"25.02.2026","nextDate":"28.03.2026","mobile":"","notes":"","status":"pending"},{"id":80,"name":"RICHHPAL VGERH (695/20)","type":"AW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"ACJM SDS","person":"BHANWARLAL RO MOTASAR KHUNI","dateReceived":"07.03.2026","nextDate":"28.03.2026","mobile":"","notes":"","status":"pending"},{"id":81,"name":"RICHHPAL VGERH (695/20)","type":"AW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"ACJM SDS","person":"BUTA SINGH RO 12 GD ANUPGARH","dateReceived":"07.03.2026","nextDate":"28.03.2026","mobile":"","notes":"","status":"pending"},{"id":82,"name":"RICHHPAL VGERH (695/20)","type":"AW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"ACJM SDS","person":"JAGDEEP URF DEEP SINGH  RO 10 ANUPGARH","dateReceived":"07.03.2026","nextDate":"28.03.2026","mobile":"","notes":"","status":"pending"},{"id":83,"name":"RICHHPAL VGERH (695/20)","type":"AW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"ACJM SDS","person":"RICHHPAL URF BABA RO 3 JSM PS JAITSAR","dateReceived":"07.03.2026","nextDate":"28.03.2026","mobile":"","notes":"","status":"pending"},{"id":84,"name":"KALURAM (315/2018)","type":"BW","fc":"FC 487","staff":"ANIL","prevStaff":"","court":"JM SDS","person":"CHHOTURAM AND 3 OTHRS JAITASAR","dateReceived":"02.02.2026","nextDate":"30.03.2026","mobile":"","notes":"","status":"pending"},{"id":85,"name":"KAILASHCHANDRA (46/21)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ADJ SDS","person":"SANJAY KHEJRA, VIJAY JAIPUR","dateReceived":"28.01.2026","nextDate":"02.04.2026","mobile":"","notes":"","status":"pending"},{"id":86,"name":"SANDIP VGERH (27/22)","type":"BW","fc":"FC 478","staff":"PAWAN","prevStaff":"173","court":"ADJ SDS","person":"HEMRAJ HC , RAMKISHAN ASI","dateReceived":"24.01.2026","nextDate":"04.04.2026","mobile":"","notes":"","status":"pending"},{"id":87,"name":"BHAGARAM (28/2023)","type":"BW","fc":"FC 1178","staff":"ANIL","prevStaff":"","court":"ADJ SC-ST CHURU","person":"REWANTRAM RO RATUSAR","dateReceived":"02.02.2026","nextDate":"04.04.2026","mobile":"","notes":"","status":"pending"},{"id":88,"name":"UMMED SINGH (38/2021)","type":"AW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"ADJ SC-ST CHURU","person":"LALCHAND RO JAITSISAR","dateReceived":"30.01.2026","nextDate":"04.04.2026","mobile":"","notes":"","status":"pending"},{"id":89,"name":"UMMED SINGH (38/2021)","type":"AW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"ADJ SC-ST CHURU","person":"SUMITRA DEVI RO JAITSISAR","dateReceived":"30.01.2026","nextDate":"04.04.2026","mobile":"","notes":"","status":"pending"},{"id":90,"name":"SONU VGERH (5/24)","type":"AW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"ADJ SDS","person":"RAVINDAR SINGH RO 12 KWD RAWATSAR","dateReceived":"25.02.2026","nextDate":"04.04.2026","mobile":"","notes":"","status":"pending"},{"id":91,"name":"RAKESH KUMAR (81/24)","type":"NOTICE","fc":"FC 624","staff":"RAMESH","prevStaff":"","court":"JJB COURT CHURU","person":"DOULAT RAM HC 94 -ASI","dateReceived":"27.02.2026","nextDate":"04.04.2026","mobile":"","notes":"","status":"pending"},{"id":92,"name":"RAKESH KUMAR (81/24)","type":"BW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"JJB COURT CHURU","person":"RAJENDER RO BIJRASAR, MAHENDAR FC 314, RAISING SI","dateReceived":"27.02.2026","nextDate":"04.04.2026","mobile":"","notes":"","status":"pending"},{"id":93,"name":"RAKESH KUMAR (81/24)","type":"AW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"JJB COURT CHURU","person":"TEJARAM RO BHANIPURA, GOURAV KHIDIYA SI","dateReceived":"27.02.2026","nextDate":"04.04.2026","mobile":"","notes":"","status":"pending"},{"id":94,"name":"CHHOTURAM (114/2024)","type":"AW","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"ADJ SC-ST CHURU","person":"SANTLAL RO SHYORANI","dateReceived":"02.02.2026","nextDate":"06.04.2026","mobile":"","notes":"","status":"pending"},{"id":95,"name":"MANURAM (48/24)","type":"NOTICE","fc":"FC 624","staff":"RAMESH","prevStaff":"","court":"DJ COURT CHURU","person":"DOULAT RAM HC 94 -ASI","dateReceived":"27.02.2026","nextDate":"07.04.2026","mobile":"","notes":"","status":"pending"},{"id":96,"name":"MANURAM (48/24)","type":"AW","fc":"FC 772","staff":"SURENDAR","prevStaff":"","court":"DJ COURT CHURU","person":"ANIL KUMAR FC 1178","dateReceived":"27.02.2026","nextDate":"07.04.2026","mobile":"","notes":"","status":"pending"},{"id":97,"name":"KRISHAN KUMAR (57/21)(8/20)","type":"BW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"ADJ SDS","person":"MALKIYAT SINGH SI","dateReceived":"12.02.2026","nextDate":"08.04.2026","mobile":"","notes":"","status":"pending"},{"id":98,"name":"RAJU URF RAJENDAR (50/25)","type":"BW","fc":"FC 1024","staff":"DHARMENDRA","prevStaff":"","court":"ADJ SC ST CHURU","person":"SHYAMLAL RO MALSAR","dateReceived":"27.02.2026","nextDate":"09.04.2026","mobile":"","notes":"","status":"pending"},{"id":99,"name":"GIRDHARILAL VGERH (16/2020)","type":"BW","fc":"FC 1302","staff":"MOOLCHAND","prevStaff":"","court":"ADJ SC ST CHURU","person":"MIRA DEVI RO BHANIPURA","dateReceived":"07.03.2026","nextDate":"09.04.2026","mobile":"","notes":"","status":"pending"},{"id":100,"name":"GIRDHARILAL VGERH (16/2020)","type":"BW","fc":"FC 1302","staff":"MOOLCHAND","prevStaff":"","court":"ADJ SC ST CHURU","person":"AASHARAM RO BHANIPURA","dateReceived":"07.03.2026","nextDate":"09.04.2026","mobile":"","notes":"","status":"pending"},{"id":101,"name":"SARABJIT (62/22)","type":"BW","fc":"FC 478","staff":"PAWAN","prevStaff":"173","court":"ADJ SDS","person":"OMPRAKASH HC, SURESH HC,MALKIT","dateReceived":"24.01.2026","nextDate":"10.04.2026","mobile":"","notes":"","status":"pending"},{"id":102,"name":"BALRAJ (58/22)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ADJ SDS","person":"GOURAV SI","dateReceived":"24.01.2026","nextDate":"10.04.2026","mobile":"","notes":"","status":"pending"},{"id":103,"name":"BHERARAM (49/22)(44/21)","type":"BW","fc":"FC 624","staff":"RAMESH","prevStaff":"","court":"ADJ SDS","person":"RAMCHANDRA HC 69 , VINOD HC 2044","dateReceived":"28.01.2026","nextDate":"10.04.2026","mobile":"","notes":"","status":"pending"},{"id":104,"name":"MUKESH KUMAR (57/2025)","type":"NOTICE","fc":"FC 624","staff":"RAMESH","prevStaff":"","court":"JJB COURT CHURU","person":"DR. SWATI GEIT, FC 487,HC 94, KRISHAN FSL, LFC 253, RAMESHWAR ASI, RAISINGH SI","dateReceived":"25.02.2026","nextDate":"15.04.2026","mobile":"","notes":"","status":"pending"},{"id":105,"name":"NARENDAR KUMAR (175/24)","type":"BW","fc":"FC 624","staff":"RAMESH","prevStaff":"","court":"ADJ SP. ELE. CHURU","person":"PAWAN KUMAR FC 478","dateReceived":"27.02.2026","nextDate":"15.04.2026","mobile":"","notes":"","status":"pending"},{"id":106,"name":"NARENDAR KUMAR (175/24)","type":"BW","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"ADJ SP. ELE. CHURU","person":"LAXMINARAYAN RO JHADSAR KANDHLAN","dateReceived":"27.02.2026","nextDate":"15.04.2026","mobile":"","notes":"","status":"pending"},{"id":107,"name":"KAMAL KISHOR (32/2024)","type":"AW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ADJ SDS","person":"KRISHAN KUMAR FC 338","dateReceived":"08.02.2026","nextDate":"16.04.2026","mobile":"","notes":"","status":"pending"},{"id":108,"name":"SANDEEP (117/2021)","type":"BW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"ADJ SDS","person":"CHHOTURAM AND 3 OTHER","dateReceived":"28.01.2026","nextDate":"17.04.2026","mobile":"","notes":"","status":"pending"},{"id":109,"name":"GURCHARAN (46/2022)","type":"AW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"ADJ SDS","person":"GURCHARAN SINGH RO BHATINDA","dateReceived":"06.02.2026","nextDate":"21.04.2026","mobile":"","notes":"","status":"pending"},{"id":110,"name":"KAMALJEET SINGH (91/22)(42/22)","type":"BW","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"ADJ SDS","person":"VINOD HC 2044, RAJENDER FC 1137","dateReceived":"12.02.2026","nextDate":"21.04.2026","mobile":"","notes":"","status":"pending"},{"id":111,"name":"JASVEER SINGH ETC (35/23)","type":"BW","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"ADJ SDS","person":"GOP SINGH HC, SULTAN SINGH HC 2050","dateReceived":"07.03.2026","nextDate":"23.04.2026","mobile":"","notes":"","status":"pending"},{"id":112,"name":"LAKHVINDER SINGH (38/22)","type":"BW","fc":"FC 487","staff":"ANIL","prevStaff":"","court":"ADJ SDS","person":"SHYAM SINGH AND JAGDISH BHOPAL MP","dateReceived":"07.03.2026","nextDate":"23.04.2026","mobile":"","notes":"","status":"pending"},{"id":113,"name":"JASVEER SINGH ETC (35/23)","type":"AW","fc":"FC 772","staff":"SURENDAR","prevStaff":"","court":"ADJ SDS","person":"ANIL KUMAR FC 1178","dateReceived":"07.03.2026","nextDate":"23.04.2026","mobile":"","notes":"","status":"pending"},{"id":114,"name":"KISHANLAL (48/22)","type":"BW","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"ADJ SDS","person":"MANOJ KUMAR, GIRDHARILAL","dateReceived":"28.01.2026","nextDate":"24.04.2026","mobile":"","notes":"","status":"pending"},{"id":115,"name":"RAJENDRA SINGH (12/2025)","type":"BW","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"ADJ SDS","person":"RAISINGH SI","dateReceived":"02.02.2026","nextDate":"24.04.2026","mobile":"","notes":"","status":"pending"},{"id":116,"name":"HARJINDRA SINGH (50/2022)","type":"BW","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"ADJ SDS","person":"RAMESH HC 118, RAMCHANDAR HC 69","dateReceived":"02.02.2026","nextDate":"24.04.2026","mobile":"","notes":"","status":"pending"},{"id":117,"name":"HANUMANDASH (01/25)","type":"BW","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"ADJ SDS","person":"RAISINGH SI","dateReceived":"12.02.2026","nextDate":"24.04.2026","mobile":"","notes":"","status":"pending"},{"id":118,"name":"HANUMANDASH (01/25)","type":"AW","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"ADJ SDS","person":"JAYVEER SHEKSAR","dateReceived":"12.02.2026","nextDate":"24.04.2026","mobile":"","notes":"","status":"pending"},{"id":119,"name":"PARAMJEET VGERH (36/23)","type":"AW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"ADJ SDS","person":"SONU KUMAR RO RAMPURA CITY BHATINDA","dateReceived":"25.02.2026","nextDate":"24.04.2026","mobile":"","notes":"","status":"pending"},{"id":120,"name":"JAINARAYAN (189/2023)","type":"BW","fc":"FC 1024","staff":"DHARMENDRA","prevStaff":"","court":"ADJ SC ST CHURU","person":"SHRAWAN KUMAR RO MALAKSAR","dateReceived":"23.02.2026","nextDate":"25.04.2026","mobile":"","notes":"","status":"pending"},{"id":121,"name":"SHERARAM (267/2019)","type":"NOTICE","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"JM SDS","person":"RUKMANI ,SURJA ,DEVILAL","dateReceived":"09.02.2026","nextDate":"27.04.2026","mobile":"","notes":"","status":"pending"},{"id":122,"name":"ROHITASH (80/22)","type":"BW","fc":"FC 1302","staff":"MOOLCHAND","prevStaff":"","court":"ADJ SDS","person":"KULDEEP FC 1098, RAMESH FC 624","dateReceived":"12.02.2026","nextDate":"28.04.2026","mobile":"","notes":"","status":"pending"},{"id":123,"name":"GANESH DAS (26/22) (167/18)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ADJ SDS","person":"SUBHASH FC 1036, GOPAL SINGH SI","dateReceived":"25.02.2026","nextDate":"28.04.2026","mobile":"","notes":"","status":"pending"},{"id":124,"name":"RANVEER VGERH (02/24)","type":"BW","fc":"FC 1302","staff":"MOOLCHAND","prevStaff":"","court":"ADJ SDS","person":"CHUNNILAL BHANIPURA, DOULATRAM HC 94","dateReceived":"12.02.2026","nextDate":"29.04.2026","mobile":"","notes":"","status":"pending"},{"id":125,"name":"MANOJ (09/24)","type":"BW","fc":"FC 624","staff":"RAMESH","prevStaff":"","court":"ADJ SDS","person":"DINESH MEGHWAL MANAFARSAR","dateReceived":"12.02.2026","nextDate":"29.04.2026","mobile":"","notes":"","status":"pending"},{"id":126,"name":"RAKESH ETC 43/24","type":"BW","fc":"FC 1024","staff":"DHARMENDRA","prevStaff":"","court":"ADJ SDS","person":"RANVEER AND HIRALAL","dateReceived":"20.02.2026","nextDate":"29.04.2026","mobile":"","notes":"","status":"pending"},{"id":127,"name":"CHUNNILAL (3/23)","type":"BW","fc":"FC 1024","staff":"DHARMENDRA","prevStaff":"","court":"ADJ SDS","person":"RANVEER RO MALAKSAR, GOURAV SI, DOULATRAM HC 94","dateReceived":"07.03.2026","nextDate":"29.04.2026","mobile":"","notes":"","status":"pending"},{"id":128,"name":"LALCHAND VGERH (111/21)(29/18)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ADJ SDS","person":"RUKMA DEVI RO SAWAR, DILAWAR FC 289","dateReceived":"07.03.2026","nextDate":"30.04.2026","mobile":"","notes":"","status":"pending"},{"id":129,"name":"MAGAN SINGH (05/23)","type":"BW","fc":"FC 624","staff":"RAMESH","prevStaff":"","court":"ADJ SDS","person":"ANIL KUMAR FC 1178","dateReceived":"25.02.2026","nextDate":"01.05.2026","mobile":"","notes":"","status":"pending"},{"id":130,"name":"KULVIR SINGH (16/24)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ADJ SDS","person":"ARVIND KUMAR CI","dateReceived":"07.03.2026","nextDate":"01.05.2026","mobile":"","notes":"","status":"pending"},{"id":131,"name":"KALA SINGH (30/25)","type":"BW","fc":"FC 1024","staff":"DHARMENDRA","prevStaff":"","court":"ADJ SDS","person":"RAISINGH SI","dateReceived":"25.02.2026","nextDate":"02.05.2026","mobile":"","notes":"","status":"pending"},{"id":132,"name":"RAKESH (31/24)","type":"BW","fc":"FC 1024","staff":"DHARMENDRA","prevStaff":"","court":"ADJ SDS","person":"RAISINGH SI","dateReceived":"07.03.2026","nextDate":"06.05.2026","mobile":"","notes":"","status":"pending"},{"id":133,"name":"SUBHASH CHANDRA (186/23)","type":"AW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ADJ SC ST CHURU","person":"PAWAN KUMAR RPS SDS","dateReceived":"25.02.2026","nextDate":"07.05.2026","mobile":"","notes":"","status":"pending"},{"id":134,"name":"SURESH CHAND (33/24)","type":"BW","fc":"FC 1024","staff":"DHARMENDRA","prevStaff":"","court":"ADJ SDS","person":"RAISINGH SI","dateReceived":"07.03.2026","nextDate":"07.05.2026","mobile":"","notes":"","status":"pending"},{"id":135,"name":"VIJAY SINGH (39/22)","type":"BW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"ADJ SDS","person":"MALKIYAT SINGH SI, RAMCHANDAR HC 69","dateReceived":"07.03.2026","nextDate":"07.05.2026","mobile":"","notes":"","status":"pending"},{"id":136,"name":"RAMLAL (38/22)","type":"AW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"ADJ SC ST CHURU","person":"MUNNIRAM RO JAITSISAR","dateReceived":"07.03.2026","nextDate":"07.05.2026","mobile":"","notes":"","status":"pending"},{"id":137,"name":"RAMLAL (38/22)","type":"AW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"ADJ SC ST CHURU","person":"KRISHNA W/O DUNGAR RAM RO JAITSISAR","dateReceived":"07.03.2026","nextDate":"07.05.2026","mobile":"","notes":"","status":"pending"},{"id":138,"name":"RAMKUMAR (39/23)","type":"BW","fc":"FC 1010","staff":"DHARAMPAL","prevStaff":"624","court":"ADJ SC ST CHURU","person":"SITARAM RO ASPALSAR BARA","dateReceived":"27.02.2026","nextDate":"14.05.2026","mobile":"","notes":"","status":"pending"},{"id":139,"name":"BUTA SINGH (53/25)","type":"BW","fc":"FC 624","staff":"RAMESH","prevStaff":"","court":"ADJ SDS","person":"RAMCHANDAR HC 69","dateReceived":"27.02.2026","nextDate":"15.05.2026","mobile":"","notes":"","status":"pending"},{"id":140,"name":"NANURAM (20/22)","type":"AW","fc":"FC 772","staff":"SURENDAR","prevStaff":"","court":"ADJ SDS","person":"VINOD HC 2044","dateReceived":"07.03.2026","nextDate":"21.05.2026","mobile":"","notes":"","status":"pending"},{"id":141,"name":"126,135(3) BNSS","type":"NOTICE","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"SDM SARDARSHAHAR","person":"RAMPRATAP,GURMIT,MANPRIT,MANJIT","dateReceived":"01.01.2026","nextDate":"08.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":142,"name":"RINKUDUTT (141/15)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"JM SDS","person":"VIRAT FC 173 MAFRURI","dateReceived":"07.01.2026","nextDate":"12.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":143,"name":"AMARSINGH (229/13)","type":"AW","fc":"FC 956","staff":"NITESH","prevStaff":"","court":"JM SDS","person":"CHANDARPAL JHADSAR CHHOTA","dateReceived":"06.01.2026","nextDate":"12.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":144,"name":"HARIRAM (979/19)","type":"AW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"JM SDS","person":"HARIRAM","dateReceived":"05.01.2026","nextDate":"13.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":145,"name":"GURWINDWR S. (601/2024)","type":"BW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"JM SDS","person":"GURWINDER SINGH","dateReceived":"05.01.2026","nextDate":"15.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":146,"name":"IKBAL (824/2017)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ACJM SDS","person":"HC 91, RAJVEER SHO, HARIRAM","dateReceived":"12.01.2026","nextDate":"17.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":147,"name":"ANJOT SINGH(34/24)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"173","court":"ADJ SDS","person":"HC 94, RAISINGH SHO","dateReceived":"12.01.2026","nextDate":"17.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":148,"name":"ANJOT SINGH(34/24)","type":"BW","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"ADJ SDS","person":"LADHU SINGH","dateReceived":"12.01.2026","nextDate":"17.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":149,"name":"AMARSINGH (229/13)","type":"AW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"JM SDS","person":"KUSHLARAM HC","dateReceived":"12.01.2026","nextDate":"17.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":150,"name":"AMARSINGH (229/13)","type":"AW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"JM SDS","person":"ARUN CHOUDHARY SI","dateReceived":"12.01.2026","nextDate":"17.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":151,"name":"GOPAL VGERH (42/24)","type":"AW","fc":"FC 478","staff":"PAWAN","prevStaff":"173","court":"ADJ SDS","person":"RAJU SINGH HC 98 , KULDEEP FC 1098","dateReceived":"12.01.2026","nextDate":"17.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":152,"name":"NEEMARAM 9520/25)","type":"NOTICE","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"JM SDS","person":"NEEMARAM R/O KHUIYAN","dateReceived":"05.01.2026","nextDate":"17.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":153,"name":"MUKESH KHA (57/25)","type":"BW","fc":"FC 772","staff":"SURENDAR","prevStaff":"","court":"DJ CHURU","person":"MONIKA","dateReceived":"17.01.2026","nextDate":"19.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":154,"name":"AMANPREET (42/2019)","type":"BW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"JM SDS","person":"YAKUB,MAHAVEER,AMILAL,DINDYAL","dateReceived":"05.01.2026","nextDate":"20.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":155,"name":"AMILAL (219/17)","type":"AW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ACJM SDS","person":"SHELENDRA FC 880","dateReceived":"05.01.2026","nextDate":"20.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":156,"name":"NARENDRA VGERH (479/20)","type":"NOTICE","fc":"FC 478","staff":"PAWAN","prevStaff":"173","court":"ACJM SDS","person":"RAMESH HC 118, FC 1098","dateReceived":"12.01.2026","nextDate":"20.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":157,"name":"AIDAN VGERH (152/17)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ADJ SDS","person":"RAJVEER SI","dateReceived":"12.01.2026","nextDate":"21.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":158,"name":"PARMOD (594/20)","type":"AW","fc":"FC 478","staff":"PAWAN","prevStaff":"173","court":"ACJM SDS","person":"PARMOD KUMAR PANDREU TIBBA","dateReceived":"12.01.2026","nextDate":"21.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":159,"name":"MADANLAL (32/25)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ADJ SDS","person":"SAJJANRAM, NORANGDAS","dateReceived":"12.01.2026","nextDate":"22.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":160,"name":"SUBHASH (24/22)","type":"BW","fc":"FC 624","staff":"RAMESH","prevStaff":"","court":"ADJ SDS","person":"FC 1229","dateReceived":"12.01.2026","nextDate":"22.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":161,"name":"MULARAM (118/2020)","type":"BW","fc":"FC 624","staff":"RAMESH","prevStaff":"","court":"ADJ SC-ST CHURU","person":"VIJAY DALLUSAR","dateReceived":"13.01.2026","nextDate":"22.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":162,"name":"IMILAL GIR (27/20)","type":"BW","fc":"FC 624","staff":"RAMESH","prevStaff":"","court":"ADJ SC-ST CHURU","person":"DEVILAL","dateReceived":"18.01.2026","nextDate":"22.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":163,"name":"IMILAL GIR (27/20)","type":"BW","fc":"FC 624","staff":"RAMESH","prevStaff":"","court":"ADJ SC-ST CHURU","person":"MOMAN GIR","dateReceived":"18.01.2026","nextDate":"22.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":164,"name":"ISLAM KHAN (163/20)","type":"BW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"ACJM SDS","person":"SHAMSHAD, SHARUKH,AFTAB","dateReceived":"18.01.2026","nextDate":"22.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":165,"name":"DALJEET (04/25)","type":"AW","fc":"FC 624","staff":"RAMESH","prevStaff":"173","court":"ADJ SDS","person":"RAISINGH SI , GOURAV SI","dateReceived":"12.01.2026","nextDate":"22.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":166,"name":"MULARAM VGERH (118/20)","type":"AW","fc":"FC 624","staff":"RAMESH","prevStaff":"","court":"ADJ SC-ST CHURU","person":"MAHENDRA BAJIGAR DALLUSAR","dateReceived":"13.01.2026","nextDate":"22.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":167,"name":"DALJEET SINGH (04/25)","type":"AW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ADJ SDS","person":"RAISINGH SI","dateReceived":"21.01.2026","nextDate":"22.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":168,"name":"SONU (46/2024)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"DJ COURT CHURU","person":"SUBHASH HC 58","dateReceived":"01.01.2026","nextDate":"23.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":169,"name":"JAFAR VGERH(47/2016)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"JM SDS","person":"MUKHRAM POTLIYA AND FC 623,891","dateReceived":"05.01.2026","nextDate":"23.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":170,"name":"MOHANLAL (393/20)","type":"BW","fc":"FC 1145","staff":"PALARAM","prevStaff":"173","court":"ACJM SDS","person":"KEDARMAL SI, FC 1229","dateReceived":"12.01.2026","nextDate":"23.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":171,"name":"SONU (46/24)","type":"NOTICE","fc":"FC 624","staff":"RAMESH","prevStaff":"","court":"DJ COURT CHURU","person":"DOULATRAM HC 94","dateReceived":"01.01.2026","nextDate":"23.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":172,"name":"BHOM SINGH (112/20)","type":"BW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"ADJ CHURU","person":"MAKIYAT SI","dateReceived":"21.01.2026","nextDate":"27.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":173,"name":"RAMKUMAR (771/16)(351/16)","type":"AW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"JM SDS","person":"ANISH/VIJAY","dateReceived":"05.01.2026","nextDate":"27.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":174,"name":"RAJURAM VGERH(344/2019)","type":"BW","fc":"FC 1058","staff":"MANISH KUMAR","prevStaff":"","court":"JM SDS","person":"PHULARAM, PAWAN, BHANWARI","dateReceived":"05.01.2026","nextDate":"28.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":175,"name":"UMMED SINGH (38/21)","type":"BW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"ADJ SC-ST CHURU","person":"BHANIRAM","dateReceived":"24.01.2026","nextDate":"28.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":176,"name":"UMMED SINGH (38/21)","type":"BW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"ADJ SC-ST CHURU","person":"LALCHAND","dateReceived":"24.01.2026","nextDate":"28.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":177,"name":"UMMED SINGH (38/21)","type":"BW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"ADJ SC-ST CHURU","person":"SUMITRA","dateReceived":"24.01.2026","nextDate":"28.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":178,"name":"ANJOT SINGH (48/24)","type":"BW","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"ADJ SDS","person":"LADHU SINGH BHOJASAR","dateReceived":"24.01.2026","nextDate":"28.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":179,"name":"RICHHPAL VGERH (695/20)","type":"AW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"ACJM SDS","person":"JAGDEEP URF DIP SINGH ANUPGARH","dateReceived":"20.01.2026","nextDate":"28.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":180,"name":"RICHHPAL VGERH (695/20)","type":"AW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"ACJM SDS","person":"RICHHPAL SINGH URF BABA JAITSAR","dateReceived":"20.01.2026","nextDate":"28.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":181,"name":"RICHHPAL VGERH (695/20)","type":"AW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"ACJM SDS","person":"BHANWARLAL MOTASAR KHUNI","dateReceived":"20.01.2026","nextDate":"28.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":182,"name":"RICHHPAL VGERH (695/20)","type":"AW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"ACJM SDS","person":"BUTA SINGH 12 GB ANUPGARH","dateReceived":"20.01.2026","nextDate":"28.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":183,"name":"ANJOT SINGH (34/24)","type":"AW","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"ADJ SDS","person":"BHAWANI SINGH BHOJASAR CHHOTA","dateReceived":"24.01.2026","nextDate":"28.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":184,"name":"SILOCHANA (537/25)","type":"NOTICE","fc":"FC 1302","staff":"MOOLCHAND","prevStaff":"","court":"JM SDS (BHARAN P)","person":"MANISH URF MANSARAM MANDAWA","dateReceived":"20.01.2026","nextDate":"28.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":185,"name":"SILOCHANA (538/25)","type":"NOTICE","fc":"FC 1302","staff":"MOOLCHAND","prevStaff":"","court":"JM SDS (BHARAN P)","person":"MANISH URF MANSARAM MANDAWA","dateReceived":"20.01.2026","nextDate":"28.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":186,"name":"JASVEER SINGH (35/23)","type":"BW","fc":"FC 478","staff":"PAWAN","prevStaff":"173","court":"ADJ SDS","person":"MAHENDRA ASI","dateReceived":"12.01.2026","nextDate":"29.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":187,"name":"IMILAL GIRI (27/2020)","type":"BW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"ADJ SC-ST CHURU","person":"REWANT GIR DHANI DUDGIR","dateReceived":"28.01.2026","nextDate":"29.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":188,"name":"IMILAL GIRI (27/2020)","type":"BW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"ADJ SC-ST CHURU","person":"JAGDISH GIR DHANI DUDGIR","dateReceived":"28.01.2026","nextDate":"29.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":189,"name":"SHAYAR SINGH (35/25)","type":"AW","fc":"FC 478","staff":"PAWAN","prevStaff":"173","court":"ADJ SDS","person":"SHANTI DEVI,RAJU DEVI,SHUBKARAN","dateReceived":"12.01.2026","nextDate":"29.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":190,"name":"JASVEER SINGH (35/2023)","type":"AW","fc":"FC 624","staff":"RAMESH","prevStaff":"","court":"ADJ SDS","person":"ANIL FC 1178","dateReceived":"12.01.2026","nextDate":"29.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":191,"name":"INDRA DEVI (344/25)","type":"NOTICE","fc":"FC 487","staff":"ANIL","prevStaff":"","court":"JM SDS","person":"INDRA DEVI W/O RAJURAM RANASAR","dateReceived":"05.01.2026","nextDate":"29.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":192,"name":"BRIJLAL VGERH (190/170","type":"NOTICE","fc":"FC 487","staff":"ANIL","prevStaff":"","court":"ACJM SDS","person":"MULARAM, RAJVIR, BALVIR","dateReceived":"05.01.2026","nextDate":"29.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":193,"name":"RAJENDRA DUDY (18/2023)","type":"NOTICE","fc":"FC 624","staff":"RAMESH","prevStaff":"","court":"DJ COURT CHURU","person":"MANISH FC 1058","dateReceived":"20.01.2026","nextDate":"29.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":194,"name":"RAJENDRA DUDY (18/2023)","type":"NOTICE","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"DJ COURT CHURU","person":"MANFUL R/O BAKHUSAR MAHAJAN","dateReceived":"20.01.2026","nextDate":"29.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":195,"name":"RAJENDRA DUDY (18/2023)","type":"NOTICE","fc":"FC 624","staff":"RAMESH","prevStaff":"","court":"DJ COURT CHURU","person":"SUNIL FC 1276","dateReceived":"20.01.2026","nextDate":"29.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":196,"name":"JASVEER SINGH (35/23)","type":"BW","fc":"FC 478","staff":"PAWAN","prevStaff":"173","court":"ADJ SDS","person":"HC 11, HC 2050","dateReceived":"12.01.2026","nextDate":"30.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":197,"name":"RAJENDAR SINGH(12/25)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ADJ SDS","person":"RAISINGH SI","dateReceived":"21.01.2026","nextDate":"30.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":198,"name":"AMARSINGH (229/13)","type":"AW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ACJM SDS","person":"KUSHLARAM HC","dateReceived":"21.01.2026","nextDate":"31.01.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":199,"name":"BHOM SINGH (112/2020)","type":"BW","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"ADJ SDS","person":"MALKIYAT SINGH SI","dateReceived":"28.01.2026","nextDate":"02.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":200,"name":"GOPAL (42/24)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ADJ SDS","person":"FC 735, HC 58","dateReceived":"12.01.2026","nextDate":"03.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":201,"name":"MUNTAF ALI (01/2014)","type":"NOTICE","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ACJM SDS","person":"DIPAK, HANUMANDAS HC , DIPAK","dateReceived":"23.01.2026","nextDate":"03.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":202,"name":"JAISARAM VGERH(49/2019)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"JM SDS","person":"DR. RAJESH GUPTA, HC 113, MALKIT","dateReceived":"05.01.2026","nextDate":"05.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":203,"name":"MULARAM (118/23)","type":"BW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"ADJ SC-ST CHURU","person":"MALKIYAT SI","dateReceived":"24.01.2026","nextDate":"05.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":204,"name":"MULARAM (118/23)","type":"BW","fc":"FC 624","staff":"RAMESH","prevStaff":"","court":"ADJ SC-ST CHURU","person":"VIJAY ROLASAR","dateReceived":"24.01.2026","nextDate":"05.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":205,"name":"MULARAM (118/23)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ADJ SC-ST CHURU","person":"GIRDHARI LAL CO","dateReceived":"24.01.2026","nextDate":"05.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":206,"name":"SUBHASH (26/22)","type":"BW","fc":"FC 624","staff":"RAMESH","prevStaff":"","court":"ADJ SDS","person":"SURENDRA FC 1229","dateReceived":"24.01.2026","nextDate":"05.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":207,"name":"IMILAL GIRI (27/2020)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ADJ SC-ST CHURU","person":"GAJU RAM DHANI DUDGIR","dateReceived":"01.02.2026","nextDate":"05.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":208,"name":"IMILAL GIRI (27/2020)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ADJ SC-ST CHURU","person":"BAJRANGLAL DHANI DUDGIR","dateReceived":"01.02.2026","nextDate":"05.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":209,"name":"RAJENDRA DUDY (18/23)","type":"AW","fc":"FC 772","staff":"SURENDAR","prevStaff":"","court":"ADJ S ELEC CHURU","person":"RANVEER SINGH UDASAR BHALERI DR","dateReceived":"24.01.2026","nextDate":"05.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":210,"name":"ANITA VS MOTIRAM (473/25)","type":"NOTICE","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"JM SDS (BHARAN P)","person":"MOTIRAM RO BHOJASAR","dateReceived":"23.01.2026","nextDate":"05.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":211,"name":"ANITA VS MOTIRAM (473/25)","type":"NOTICE","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"JM SDS (BHARAN P)","person":"MOTIRAM RO BHOJASAR","dateReceived":"23.01.2026","nextDate":"05.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":212,"name":"RAJENDRA DUDY (18/2023)","type":"NOTICE","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"DJ COURT CHURU","person":"SUBHASH SI","dateReceived":"23.01.2026","nextDate":"05.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":213,"name":"RAJENDRA DUDY (18/2023)","type":"NOTICE","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"DJ COURT CHURU","person":"MOHANLAL ASI","dateReceived":"23.01.2026","nextDate":"05.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":214,"name":"RAJENDRA DUDY (18/2023)","type":"NOTICE","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"DJ COURT CHURU","person":"DAMODAR SINGH RO SATYUN","dateReceived":"23.01.2026","nextDate":"05.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":215,"name":"SHERARAM (267/2019)","type":"NOTICE","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"JM SDS","person":"RUKMANI ,SURJA ,DEVILAL","dateReceived":"23.01.2026","nextDate":"05.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":216,"name":"SWAI SINGH (44/24)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ADJ SDS","person":"SUBHASH HC 58, RAJENDRA FC 1137","dateReceived":"24.01.2026","nextDate":"06.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":217,"name":"SWAI SINGH (44/24)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ADJ SDS","person":"SANDEEP FC 1204, KULDEEP FC 1098","dateReceived":"24.01.2026","nextDate":"06.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":218,"name":"ANIL (35/22)","type":"AW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ADJ SDS","person":"SANDIP FC 800, OM JI CI","dateReceived":"24.01.2026","nextDate":"06.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":219,"name":"MAYANK VGERH (676/22)","type":"AW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"JM SDS","person":"MAYANK GODHUWALI DHANI","dateReceived":"24.01.2026","nextDate":"06.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":220,"name":"MAYANK VGERH (676/22)","type":"AW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"JM SDS","person":"LICHHIRAM KELNIYA","dateReceived":"24.01.2026","nextDate":"06.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":221,"name":"MAYANK VGERH (676/22)","type":"AW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"JM SDS","person":"AJAY KELNIYA","dateReceived":"24.01.2026","nextDate":"06.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":222,"name":"ANJOT SINGH (34/2024)","type":"BW","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"ADJ SDS","person":"JAGDISH BHOJASAR, RAJENDRA ASI","dateReceived":"28.01.2026","nextDate":"07.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":223,"name":"SHANKAR (700/2015)","type":"AW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"JM SDS","person":"MANGAL SINGH MOJUKHERA","dateReceived":"24.01.2026","nextDate":"07.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":224,"name":"MADAN LAL(32/25)","type":"BW","fc":"FC 1247","staff":"BHADAR RAM","prevStaff":"","court":"ADJ SDS","person":"PIRATHA RAM, MEERA RAJASAR PANW","dateReceived":"24.01.2026","nextDate":"09.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":225,"name":"SHRWAN SINGH (505/2025)","type":"BW","fc":"FC 1058","staff":"MANISH KUMAR","prevStaff":"","court":"JM SDS","person":"SHRWAN SINGH SAWAR","dateReceived":"29.01.2026","nextDate":"09.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":226,"name":"SHRWAN SINGH (504/2025)","type":"BW","fc":"FC 1058","staff":"MANISH KUMAR","prevStaff":"","court":"JM SDS","person":"SHRWAN SINGH  SAWAR","dateReceived":"29.01.2026","nextDate":"09.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":227,"name":"BHOM SINGH (112/2020)","type":"BW","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"ADJ SC-ST CHURU","person":"MALKIYAT SINGH SI","dateReceived":"02.02.2026","nextDate":"09.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":228,"name":"MULARAM (489/15)(431/15)","type":"BW","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"JM SDS","person":"RANVIR,BALWIR, SUMER  RO RANASAR","dateReceived":"02.02.2026","nextDate":"09.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":229,"name":"MULARAM (489/15)(431/15)","type":"BW","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"JM SDS","person":"KASHYAP SINGH SI , ASHOK BISHNOI CI","dateReceived":"02.02.2026","nextDate":"09.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":230,"name":"BHAGIRATH NATH (374/2018)","type":"AW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"JM SDS","person":"RAJIV ROYAL SI","dateReceived":"30.01.2026","nextDate":"09.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":231,"name":"MUNTAF ALI (01/2014)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ACJM SDS","person":"DIPAK, HANUMANDAS HC , DIPAK","dateReceived":"06.02.2026","nextDate":"10.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":232,"name":"SATTAR KHAN (470/2015)","type":"BW","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"ACJM SDS","person":"SANDEEP FC 800","dateReceived":"09.02.2026","nextDate":"10.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":233,"name":"SRICHAND (180/2024)","type":"NOTICE","fc":"FC 1302","staff":"MOOLCHAND","prevStaff":"","court":"JM SDS","person":"TARAMANI AND 3 OTHRS , GOURAV SI","dateReceived":"23.01.2026","nextDate":"10.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":234,"name":"LALCHAND (111/21)","type":"BW","fc":"FC 1024","staff":"DHARMENDRA","prevStaff":"","court":"ADJ SDS","person":"DILAWAR FC AND DOCTOR MUKUL","dateReceived":"05.01.2026","nextDate":"11.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":235,"name":"LALCHAND (111/2021)","type":"AW","fc":"FC 1058","staff":"MANISH KUMAR","prevStaff":"","court":"ADJ SDS","person":"RUKMA DEVI SAWAR","dateReceived":"05.01.2026","nextDate":"11.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":236,"name":"SAMANDAR SINGH(204/17)","type":"AW","fc":"FC 772","staff":"SURENDAR","prevStaff":"","court":"ACJM SDS","person":"SAMANDAR SINGH JASASAR","dateReceived":"28.01.2026","nextDate":"11.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":237,"name":"OMGAR VS HEMRAJ 432/12","type":"AW","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"JM SDS","person":"HEMRAJ RO RATNADESAR","dateReceived":"05.02.2026","nextDate":"11.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":238,"name":"SHANKAR GIR (408/20)","type":"NOTICE","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"ACJM SDS","person":"YADRAM RO BHAOJSAR","dateReceived":"23.01.2026","nextDate":"11.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":239,"name":"FIR NO. 15/2026","type":"NOTICE","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"JM SDS","person":"SMT. DROPATI RO RAYANWALI","dateReceived":"11.02.2026","nextDate":"11.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":240,"name":"RAJENDRA DUDY (18/2023)","type":"BW","fc":"FC 624","staff":"RAMESH","prevStaff":"","court":"ADJ S ELEC CHURU","person":"SUNIL FC 1276","dateReceived":"02.02.2026","nextDate":"12.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":241,"name":"RAJENDRA DUDY (18/2023)","type":"BW","fc":"FC 624","staff":"RAMESH","prevStaff":"","court":"ADJ S ELEC CHURU","person":"MANISH FC 1058","dateReceived":"02.02.2026","nextDate":"12.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":242,"name":"DALJEET (04/25)","type":"AW","fc":"FC 478","staff":"PAWAN","prevStaff":"Fc","court":"ADJ SDS","person":"RAISINGH SI , GOURAV SI","dateReceived":"28.01.2026","nextDate":"12.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":243,"name":"SUBHASH (24/22)","type":"BW","fc":"FC 624","staff":"RAMESH","prevStaff":"","court":"ADJ SDS","person":"SURENDAR FC 1229","dateReceived":"11.02.2026","nextDate":"12.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":244,"name":"RINKUDAT (614/15)(525/15)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"JM SDS","person":"MO. IDRIS MTO, DR RAJESH, GOVRDHN","dateReceived":"29.01.2026","nextDate":"13.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":245,"name":"RAJENDRA SINGH (435/2020)","type":"BW","fc":"FC 1229","staff":"SURENDAR","prevStaff":"1178","court":"JM SDS","person":"GOPIRAM RO DEWASAR","dateReceived":"08.02.2026","nextDate":"13.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":246,"name":"LAKHWINDER SINGH(561/18)","type":"BW","fc":"FC 1058","staff":"MANISH KUMAR","prevStaff":"","court":"JM SDS","person":"RANVEER, GANPATRAM, JAGDISH","dateReceived":"08.02.2026","nextDate":"13.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":247,"name":"LAXMANGIRI (974/2019)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"JM SDS","person":"SHARDA. SAJAN, JEEVGIRI","dateReceived":"08.02.2026","nextDate":"13.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":248,"name":"IRSHAD VGERH (539/18)","type":"NOTICE","fc":"FC 624","staff":"RAMESH","prevStaff":"173","court":"JM SDS","person":"HC 2050, KUNAN FC 665, PATMAL FC 745","dateReceived":"12.01.2026","nextDate":"13.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":249,"name":"RINKUDAT (614/15)(525/15)","type":"BW","fc":"FC 772","staff":"SURENDAR","prevStaff":"","court":"JM SDS","person":"MD SAIFUDEEN AND 3 OTHERS WB","dateReceived":"29.01.2026","nextDate":"16.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":250,"name":"RINKUDAT (614/15)(525/15)","type":"BW","fc":"FC 772","staff":"SURENDAR","prevStaff":"","court":"JM SDS","person":"URMILA BIBI AND 4 OTHERS WB","dateReceived":"29.01.2026","nextDate":"17.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":251,"name":"TARACHAND (78/24)","type":"AW","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"ADJ SC-ST CHURU","person":"SURESH S/O GIRDHARI MALAKSAR","dateReceived":"24.01.2026","nextDate":"17.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":252,"name":"OMPRAKASH (436/2018)","type":"AW","fc":"FC 624","staff":"RAMESH","prevStaff":"","court":"JM SDS","person":"BIMLA DEVI DALLUSAR","dateReceived":"30.01.2026","nextDate":"17.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":253,"name":"OMPRAKASH (436/2018)","type":"AW","fc":"FC 624","staff":"RAMESH","prevStaff":"","court":"JM SDS","person":"MIRA DEVI DALLUSAR","dateReceived":"30.01.2026","nextDate":"17.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":254,"name":"SAWAI SINGH VGERH (525/2014)","type":"BW","fc":"FC 624","staff":"RAMESH","prevStaff":"","court":"ACJM SDS","person":"KULDEEP FC 1098","dateReceived":"11.02.2026","nextDate":"17.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":255,"name":"GOPALRAM (42/24)","type":"BW","fc":"FC 624","staff":"RAMESH","prevStaff":"","court":"ADJ SDS","person":"KULDEEP FC 1098","dateReceived":"06.02.2026","nextDate":"18.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":256,"name":"TILOKNATH ETC (531/2018)","type":"BW","fc":"FC 1302","staff":"MOOLCHAND","prevStaff":"","court":"JM SDS","person":"SANGITA, LFC 467, SHELENDRA PRNCPL","dateReceived":"06.02.2026","nextDate":"18.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":257,"name":"SUBHASH (277/2019)","type":"BW","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"JM SDS","person":"DHARMPAL HC,RAMESH HC,HC 69","dateReceived":"08.02.2026","nextDate":"18.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":258,"name":"GOPALLAL (42/24)","type":"AW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ADJ SDS","person":"HARENDAR FC 735, HC 58, FC 1178","dateReceived":"06.02.2026","nextDate":"18.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":259,"name":"MUKESH KUMAR (57/2025)","type":"NOTICE","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"JJB CHURU","person":"DHANNU, DR CHC ,FC 487, LFC253,HC 94","dateReceived":"23.01.2026","nextDate":"18.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":260,"name":"CHIMANDAS (401/18)","type":"NOTICE","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ACJM SDS","person":"HC 69, FC 258, RAJIV SI","dateReceived":"02.02.2026","nextDate":"18.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":261,"name":"BHOM SINGH (112/20)","type":"BW","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"","person":"","dateReceived":"","nextDate":"","mobile":"","notes":"","status":"pending"},{"id":262,"name":"JASWIR ETC (35/2023)","type":"BW","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"ADJ SDS","person":"MAHENDRA ASI","dateReceived":"02.02.2026","nextDate":"19.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":263,"name":"TIRTH SINGH (461/2018)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"JM SDS","person":"RAJIV ROYAL SI","dateReceived":"02.02.2026","nextDate":"19.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":264,"name":"ISHWAR SINGH (327/17)","type":"BW","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"ACJM SDS","person":"SANJAY FC 953, SANDEEP FC 800","dateReceived":"06.02.2026","nextDate":"19.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":265,"name":"IMILAL GIRI (27/2020)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ADJ SC-ST CHURU","person":"MAHENDRA GIR RO DHANI DUDGIR","dateReceived":"09.02.2026","nextDate":"19.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":266,"name":"IMILAL GIRI (27/2020)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ADJ SC-ST CHURU","person":"PATRAM RO DHANI DUDGIR","dateReceived":"09.02.2026","nextDate":"19.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":267,"name":"IMILAL GIRI (27/2020)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ADJ SC-ST CHURU","person":"DHANNGIR RO DHANI DUDGIR","dateReceived":"09.02.2026","nextDate":"19.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":268,"name":"PARAMJEET VGERH (36/23)","type":"AW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"ADJ SDS","person":"SONU KUMAR R/O BHATINDA","dateReceived":"05.01.2026","nextDate":"19.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":269,"name":"RAKESH KUMAR (81/24)","type":"AW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"JJB COURT CHURU","person":"TEJARAM , GOURAV KHIRIYA SI","dateReceived":"21.01.2026","nextDate":"19.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":270,"name":"JASVIR ETC (35/23)","type":"AW","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"ADJ SDS","person":"ANIL FC 1178","dateReceived":"02.02.2026","nextDate":"19.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":271,"name":"TIRTH SINGH (461/2018)","type":"AW","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"JM SDS","person":"OMPRAKASH HC 146","dateReceived":"02.02.2026","nextDate":"19.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":272,"name":"TIRTH SINGH (461/2018)","type":"AW","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"JM SDS","person":"SHANKARLAL RO SADASAR","dateReceived":"02.02.2026","nextDate":"19.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":273,"name":"RAKESH KUMAR (81/24)","type":"NOTICE","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"JJB COURT CHURU","person":"RAJENDRA, FC 314, HC 94 , RAISINGH SI","dateReceived":"20.01.2026","nextDate":"19.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":274,"name":"KOUSHLYA VS MANGILAL 69","type":"NOTICE","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"JM SDS ( HETUK N)","person":"MANGILAL RO RAJAS","dateReceived":"02.02.2026","nextDate":"19.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":275,"name":"KOUSHLYA VS MANGILAL 68","type":"NOTICE","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"JM SDS ( HETUK N)","person":"MANGILAL RO RAJAS","dateReceived":"02.02.2026","nextDate":"19.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":276,"name":"GURDEEP (773/2017)","type":"NOTICE","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"ACJM SDS","person":"JAISINGH, PARAMJIT, RAMESH HC 118","dateReceived":"23.01.2026","nextDate":"20.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":277,"name":"RAMLAL (683/17)","type":"NOTICE","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ACJM SDS","person":"FC 258, FC 1036","dateReceived":"02.02.2026","nextDate":"20.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":278,"name":"GURVINDER SINGH (601/14)","type":"BW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"JM SDS","person":"GURVINDER SINGH RO MALOT","dateReceived":"29.01.2026","nextDate":"21.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":279,"name":"BHALDASH (375/2020)","type":"AW","fc":"FC 1010","staff":"DHARAMPAL","prevStaff":"","court":"ACJM SDS","person":"BHALDASH ASPALSAR BARA","dateReceived":"12.01.2026","nextDate":"21.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":280,"name":"RAMSINGH VS NIMA (520/25)","type":"NOTICE","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"JM SDS","person":"NIMARAM RO KHUIYAN","dateReceived":"02.02.2026","nextDate":"21.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":281,"name":"NARENDRA KUMAR(175/24)","type":"BW","fc":"FC 624","staff":"RAMESH","prevStaff":"","court":"ADJ S ELEC CHURU","person":"PAWAN FC 478","dateReceived":"24.01.2026","nextDate":"23.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":282,"name":"NARENDRA KUMAR(175/24)","type":"BW","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"ADJ S ELEC CHURU","person":"LAXMINAYARAYAN","dateReceived":"24.01.2026","nextDate":"23.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":283,"name":"PURNARAM (510/2018)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"JM SDS","person":"HC 147, FC 1036, HC 69","dateReceived":"29.01.2026","nextDate":"23.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":284,"name":"VINOD VGERH (402/2018)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"JM SDS","person":"TILOCHAND AND 2 OTHRS, RAJIV SI","dateReceived":"02.02.2026","nextDate":"23.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":285,"name":"SUMESH KUMAR (377/2018)","type":"BW","fc":"FC 624","staff":"RAMESH","prevStaff":"","court":"JM SDS","person":"CHHOTU, RUGHVIR , HADMAN","dateReceived":"06.02.2026","nextDate":"23.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":286,"name":"KALURAM (577/2016)","type":"AW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"JM SDS","person":"HEMRAJ HC 91","dateReceived":"30.01.2026","nextDate":"23.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":287,"name":"KALURAM (577/2016)","type":"AW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"JM SDS","person":"ASHOK BISHNOI CI","dateReceived":"30.01.2026","nextDate":"23.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":288,"name":"MADANLAL (32/25)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ADJ SDS","person":"PIRTHA RAM, DHANNI DEVI, MEGHARAM, VIMLA","dateReceived":"11.02.2026","nextDate":"23.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":289,"name":"MADANLAL (32/25)","type":"AW","fc":"FC 1247","staff":"BHADAR RAM","prevStaff":"","court":"ADJ SDS","person":"MEERA RO RAJASAR PANWARAN","dateReceived":"11.02.2026","nextDate":"23.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":290,"name":"MANURAM (48/24)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ADJ S ELEC CHURU","person":"MOHAN LAL ASI","dateReceived":"24.01.2026","nextDate":"24.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":291,"name":"MANURAM (48/24)","type":"BW","fc":"FC 624","staff":"RAMESH","prevStaff":"","court":"ADJ S ELEC CHURU","person":"ANIL KUMAR FC 1178","dateReceived":"24.01.2026","nextDate":"24.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":292,"name":"KALURAM (577/16)(276/16)","type":"BW","fc":"FC 1058","staff":"MANISH KUMAR","prevStaff":"","court":"ADJ SDS","person":"MANIRAM, SITARAM, HANUMAN","dateReceived":"29.01.2026","nextDate":"24.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":293,"name":"AAIDAN ETC (152/2017)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ACJM SDS","person":"RAJVIR SINGH SI","dateReceived":"02.02.2026","nextDate":"24.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":294,"name":"LAL SINGH (572/16)(277/16)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"JM SDS","person":"GOVARDHAN HC","dateReceived":"02.02.2026","nextDate":"24.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":295,"name":"MUNTAF ALI (01/2014)","type":"AW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ACJM SDS","person":"HANUMAN DAS HC UDANDASTA TARGET CASE","dateReceived":"12.02.2026","nextDate":"24.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":296,"name":"JAYLAL VGERH (08/2023)","type":"BW","fc":"FC 487","staff":"ANIL","prevStaff":"","court":"ADJ SDS","person":"DR. PK PEDIWAL","dateReceived":"12.01.2026","nextDate":"25.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":297,"name":"RAKESH (31/24)","type":"BW","fc":"FC 624","staff":"RAMESH","prevStaff":"173","court":"ADJ SDS","person":"RAISINGH SI","dateReceived":"24.01.2026","nextDate":"25.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":298,"name":"DINARAM (970/19)","type":"BW","fc":"FC 624","staff":"RAMESH","prevStaff":"173","court":"JM SDS","person":"LOKENDRA , PAWAN , HARIKISHAN","dateReceived":"24.01.2026","nextDate":"25.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":299,"name":"SUSMA VS LEKH (464/25)","type":"NOTICE","fc":"FC 1302","staff":"MOOLCHAND","prevStaff":"","court":"JM SDS ( HETUK N)","person":"LEKHRAM RO BHANIPURA","dateReceived":"06.02.2026","nextDate":"25.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":300,"name":"SUSMA VS LEKH (465/25)","type":"NOTICE","fc":"FC 1302","staff":"MOOLCHAND","prevStaff":"","court":"JM SDS ( HETUK N)","person":"LEKHRAM RO BHANIPURA","dateReceived":"06.02.2026","nextDate":"25.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":301,"name":"MONIKA DEVI (343/2025)","type":"NOTICE","fc":"FC 772","staff":"SURENDAR","prevStaff":"","court":"JM SDS","person":"MONIKA DEVI RO BILYUBAS RAMPURA","dateReceived":"06.02.2026","nextDate":"25.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":302,"name":"HARIRAM VS MANGE(503/25)","type":"NOTICE","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"JM SDS NIA ACT","person":"MANGERAM RO MUNSRI BHADRA","dateReceived":"06.02.2026","nextDate":"25.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":303,"name":"PAWAN KUMAR (42/2025)","type":"BW","fc":"FC 1024","staff":"DHARMENDRA","prevStaff":"","court":"POCSO COURT CHURU","person":"SMT. MAINA DEVI RO MALSAR","dateReceived":"23.02.2026","nextDate":"25.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":304,"name":"PAWAN KUMAR (42/2025)","type":"BW","fc":"FC 1024","staff":"DHARMENDRA","prevStaff":"","court":"POCSO COURT CHURU","person":"SMT DEEPIKA LFC 253","dateReceived":"23.02.2026","nextDate":"25.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":305,"name":"SURESH CHAND (33/24)","type":"BW","fc":"FC 624","staff":"RAMESH","prevStaff":"173","court":"ADJ SDS","person":"RAISINGH SI","dateReceived":"05.01.2026","nextDate":"26.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":306,"name":"LAKHVIR VGERH (194/2021)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ADJ SDS","person":"PRTAPDAS, KESHARDEVI, GUGANRAM","dateReceived":"29.01.2026","nextDate":"26.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":307,"name":"JASWIR ETC (35/2023)","type":"BW","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"ADJ SDS","person":"GOP SINGH HC, SULTAN HC","dateReceived":"02.02.2026","nextDate":"26.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":308,"name":"RAJENDER DUDY 18/23","type":"BW","fc":"FC 1229","staff":"SURENDAR","prevStaff":"","court":"ADJ SP. ELE. CHURU","person":"SUBHASH CHANDRA SI","dateReceived":"20.02.2026","nextDate":"26.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":309,"name":"RAJENDER DUDY 18/23","type":"BW","fc":"FC 772","staff":"SURENDAR","prevStaff":"","court":"ADJ SP. ELE. CHURU","person":"MOHAN LAL ASI","dateReceived":"20.02.2026","nextDate":"26.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":310,"name":"RAJENDER DUDY 18/23","type":"BW","fc":"FC 772","staff":"SURENDAR","prevStaff":"","court":"ADJ SP. ELE. CHURU","person":"DAMODAR SHARMA R/O SATYUN TARANAGAR","dateReceived":"20.02.2026","nextDate":"26.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":311,"name":"RAJENDER DUDY 18/23","type":"AW","fc":"FC 772","staff":"SURENDAR","prevStaff":"","court":"ADJ SP. ELE. CHURU","person":"MANISH FC 1058","dateReceived":"20.02.2026","nextDate":"26.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":312,"name":"RAJENDER DUDY 18/23","type":"AW","fc":"FC 772","staff":"SURENDAR","prevStaff":"","court":"ADJ SP. ELE. CHURU","person":"SUNIL KUMAR FC 1276","dateReceived":"20.02.2026","nextDate":"26.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":313,"name":"PAWAN KUMAR (42/2025)","type":"BW","fc":"FC 1024","staff":"DHARMENDRA","prevStaff":"","court":"POCSO COURT CHURU","person":"DOULAT RAM HC 94 -ASI","dateReceived":"23.02.2026","nextDate":"26.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":314,"name":"PAWAN KUMAR (42/2025)","type":"BW","fc":"FC 1024","staff":"DHARMENDRA","prevStaff":"","court":"POCSO COURT CHURU","person":"RAISINGH SI","dateReceived":"23.02.2026","nextDate":"26.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":315,"name":"JASVEER SINGH ETC (35/23)","type":"BW","fc":"FC 624","staff":"RAMESH","prevStaff":"","court":"ADJ SDS","person":"MAHENDAR SINGH ASI","dateReceived":"25.02.2026","nextDate":"26.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":316,"name":"IMILAL GIR ETC (27/2020)","type":"BW","fc":"FC 624","staff":"RAMESH","prevStaff":"","court":"ADJ SC ST CHURU","person":"GIRDHARI LAL CO SDS","dateReceived":"25.02.2026","nextDate":"26.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":317,"name":"JASVEER SINGH ETC (35/23)","type":"AW","fc":"FC 624","staff":"RAMESH","prevStaff":"","court":"ADJ SDS","person":"ANIL KUMAR FC 1178","dateReceived":"25.02.2026","nextDate":"26.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":318,"name":"KULVEER (16/24)","type":"BW","fc":"FC 624","staff":"RAMESH","prevStaff":"","court":"ADJ SDS","person":"ARVIND SINGH CI SHO BHNPR","dateReceived":"05.01.2026","nextDate":"27.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":319,"name":"RAMESHWAR LAL(333/19)","type":"BW","fc":"FC 624","staff":"RAMESH","prevStaff":"173","court":"JM SDS","person":"RAJURAM, UMESH , MALKIT","dateReceived":"24.01.2026","nextDate":"27.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":320,"name":"SONU URF BHGWAN (46/24)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ADJ S ELEC CHURU","person":"SUBHASH HC 58","dateReceived":"02.02.2026","nextDate":"27.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":321,"name":"SONU URF BHGWAN (46/24)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ADJJB CHURUJ S ELEC CHURU","person":"DOULATRAM HC 94","dateReceived":"02.02.2026","nextDate":"27.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":322,"name":"SAWAI SINGH (44/2024)","type":"BW","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"ADJ SDS","person":"RAJENDER FC 1137, SANDEEP FC 1204","dateReceived":"12.02.2026","nextDate":"27.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":323,"name":"SAWAI SINGH (44/2024)","type":"AW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ADJ SDS","person":"SUBHASH HC 58","dateReceived":"12.02.2026","nextDate":"27.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":324,"name":"ANJOT SINGH(34/24)","type":"AW","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"ADJ SDS","person":"JAGDISH SINGH R/O BHOJASAR CHHOTA, RAJENDER ASI","dateReceived":"20.02.2026","nextDate":"27.02.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":325,"name":"RAMKUMAR (771/16)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"JM SDS","person":"SUNIL SI , RAJVEER SI","dateReceived":"02.02.2026","nextDate":"04.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":326,"name":"NETRAM (376/2016)","type":"AW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"JM SDS","person":"SUNIL KUMAR SI SGNR","dateReceived":"02.02.2026","nextDate":"04.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":327,"name":"NETRAM (376/2016)","type":"AW","fc":"FC 487","staff":"ANIL","prevStaff":"","court":"JM SDS","person":"ABHISHEK FC 899","dateReceived":"02.02.2026","nextDate":"04.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":328,"name":"NETRAM (376/2016)","type":"AW","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"JM SDS","person":"SANDEEP KUMAR FC 800","dateReceived":"02.02.2026","nextDate":"04.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":329,"name":"LALCHAND VGERH (111/21)(29/18)","type":"BW","fc":"FC 1058","staff":"MANISH KUMAR","prevStaff":"","court":"ADJ SDS","person":"RUKMA DEVI RO SAWAR, DILAWAR FC 289","dateReceived":"12.02.2026","nextDate":"04.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":330,"name":"ROHITASH (110/2025)","type":"BW","fc":"FC 1024","staff":"DHARMENDRA","prevStaff":"","court":"JJB CHURU","person":"RANVEER,HIRALAL,RAMPRATAP","dateReceived":"12.01.2026","nextDate":"05.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":331,"name":"PRAHLAD SINGH (109/21)","type":"BW","fc":"FC 772","staff":"SURENDAR","prevStaff":"","court":"ADJ SDS","person":"TARACHAND DHADHRIYA CHARNAN","dateReceived":"24.01.2026","nextDate":"05.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":332,"name":"KULDEEP (730/2023)","type":"BW","fc":"FC 1145","staff":"PALARAM","prevStaff":"","court":"JM SDS","person":"KULDEEP RO POHADKA","dateReceived":"08.02.2026","nextDate":"05.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":333,"name":"DALJEET SINGH (4/25)","type":"BW","fc":"FC 1024","staff":"DHARMENDRA","prevStaff":"","court":"ADJ SDS","person":"RAISINGH SI","dateReceived":"25.02.2026","nextDate":"05.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":334,"name":"SITARAM (76/21)","type":"BW","fc":"FC 772","staff":"SURENDAR","prevStaff":"","court":"ADJ SDS","person":"DR.(ANWAR,KAPIL,JITENDRA)","dateReceived":"24.01.2026","nextDate":"06.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":335,"name":"JAFAR VGERH (47/16)(50/16)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"JM SDS","person":"MUKHRAM, HEMRAJ HC,HARDEEP FC","dateReceived":"02.02.2026","nextDate":"06.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":336,"name":"ANIL KUMAR VGERH (35/22)","type":"AW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ADJ SDS","person":"SANDEEP FC 800, OM JI GODARA CO","dateReceived":"11.02.2026","nextDate":"06.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":337,"name":"ASIF KHAN (203/23)","type":"AW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ADJ SC-ST CHURU","person":"ASIF KHAN BUKASAR BAS SDS","dateReceived":"24.01.2026","nextDate":"07.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":338,"name":"MOHANRAM (394/2018)","type":"AW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"JM SDS","person":"SUBHASH FC 1036","dateReceived":"30.01.2026","nextDate":"07.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":339,"name":"MOHANRAM (394/2018)","type":"AW","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"JM SDS","person":"RAMKISHAN ASI","dateReceived":"30.01.2026","nextDate":"07.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":340,"name":"MOHANRAM (394/2018)","type":"AW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"JM SDS","person":"SURESHPAL FC 687","dateReceived":"30.01.2026","nextDate":"07.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":341,"name":"MOHANRAM (394/2018)","type":"AW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"JM SDS","person":"SUBHASH FC 403","dateReceived":"30.01.2026","nextDate":"07.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":342,"name":"333/17","type":"NOTICE","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"ACJM SDS","person":"FULARAM, OMPRAKASH, SHUBHKARAN, CHANDURAM","dateReceived":"11.02.2026","nextDate":"07.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":343,"name":"BHURARAM (09/2025)","type":"AW","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"ADJ SP. ELE. CHURU","person":"BHURARAM /MANGTURAM RO RAIPURA","dateReceived":"12.02.2026","nextDate":"07.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":344,"name":"ANJOT SINGH(34/24)","type":"AW","fc":"FC 1247","staff":"BHADAR RAM","prevStaff":"","court":"ADJ SDS","person":"JAGDISH SINGH R/O BHOJASAR CHHOTA, RAJENDER ASI","dateReceived":"07.03.2026","nextDate":"07.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":345,"name":"FIR 26 /2026","type":"NOTICE","fc":"FC 772","staff":"SURENDAR","prevStaff":"","court":"ACJM SDS","person":"164 CRPC NIRMLA RO MEHRASAR UPADHIYAN","dateReceived":"07.03.2026","nextDate":"07.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":346,"name":"FIR NO 21/ 2026","type":"NOTICE","fc":"FC 772","staff":"SURENDAR","prevStaff":"","court":"ACJM SDS","person":"164 CRPC RADHA  RO SHERPURA","dateReceived":"07.03.2026","nextDate":"07.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":347,"name":"SITARAM (347/2024)","type":"AW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"JM SDS","person":"SITARAM RO BIKANER","dateReceived":"06.02.2026","nextDate":"09.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":348,"name":"RANVIR SINGH (68/2017)","type":"BW","fc":"FC 478","staff":"PAWAN","prevStaff":"","court":"ACJM SDS","person":"RAJARAM FC 520, SANDEEP FC 800","dateReceived":"20.02.2026","nextDate":"09.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":349,"name":"MAHENDAR SINGH (304/20)","type":"BW","fc":"FC 772","staff":"SURENDAR","prevStaff":"","court":"JM SDS","person":"GIRDHARI HC 2043, RICHHPAL ASI, MALKIYAT SINGH SI","dateReceived":"07.03.2026","nextDate":"09.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":350,"name":"LALCHAND (09/23)","type":"AW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ADJ SDS","person":"SUBHASH SI","dateReceived":"24.01.2026","nextDate":"10.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":351,"name":"BRIJLAL (190/2017)","type":"NOTICE","fc":"FC 487","staff":"ANIL","prevStaff":"","court":"ACJM SDS","person":"MULARAM, RANVIR, BALVIR RANASAR","dateReceived":"02.02.2026","nextDate":"10.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":352,"name":"IKBAL (824/17)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ACJM SDS","person":"HEMRAJ HC 91, HARIDASH R/O SHIMLA","dateReceived":"20.02.2026","nextDate":"10.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":353,"name":"LAL SINGH (572/16)(277/16)","type":"BW","fc":"FC 772","staff":"SURENDAR","prevStaff":"","court":"JM SDS","person":"GOWARDHAN HC 39","dateReceived":"07.03.2026","nextDate":"10.03.2026","mobile":"","notes":"","status":"completed","nistharan":"बाद तामिल"},{"id":354,"name":"LALCHAND (428/2018)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"JM SDS","person":"RAKESH, HEMRAJ HC , RAJIV ROYAL SI","dateReceived":"02.02.2026","nextDate":"18.03.2026","mobile":"","notes":"","status":"pending"},{"id":355,"name":"PAWAN (111/23)","type":"BW","fc":"FC 192","staff":"BHOJU RAM","prevStaff":"","court":"ADJ SC-ST CHURU","person":"REWANT GIR","dateReceived":"24.01.2026","nextDate":"24.03.2026","mobile":"","notes":"","status":"pending"}];
+
+const DEFAULT_STAFF=[
+  {nm:'VIRAT SINGH', fc:'FC 173', ph:'919799656452'},
+  {nm:'PALARAM',     fc:'FC 1145',ph:'919587280384'},
+  {nm:'ANIL',        fc:'FC 1178',ph:'919588098750'},
+  {nm:'ANIL',        fc:'FC 487', ph:'919024278710'},
+  {nm:'BHADAR RAM',  fc:'FC 1247',ph:'917742962946'},
+  {nm:'BHOJU RAM',   fc:'FC 192', ph:'918875819181'},
+  {nm:'DEEPIKA',     fc:'FC 253', ph:'918385068360'},
+  {nm:'DHARMENDRA',  fc:'FC 1024',ph:'919414690653'},
+  {nm:'MOOLCHAND',   fc:'FC 1302',ph:'919799965259'},
+  {nm:'PAWAN',       fc:'FC 478', ph:'919549070962'},
+  {nm:'SURENDAR',    fc:'FC 772', ph:'919929278243'},
+  {nm:'SURENDAR',    fc:'FC 1229',ph:'918094376003'},
+  {nm:'RAMESH',      fc:'FC 624', ph:'918824388895'},
+  {nm:'NITESH',      fc:'FC 956', ph:'917742981550'},
+  {nm:'MANISH KUMAR',fc:'FC 1058',ph:'918003489301'},
+  {nm:'DHARAMPAL',   fc:'FC 1010',ph:'918696767715'},
+];
+
+let recs=JSON.parse(JSON.stringify(INIT));
+let staffList=[...DEFAULT_STAFF];
+let curTab='pending',curWT='BW',curRec=null,curUD=null,nisId=null,saving=false;
+
+// ── AUTH ──
+function doLogin(){
+  const e=document.getElementById('le').value.trim(),p=document.getElementById('lp').value;
+  const err=document.getElementById('lerr'),btn=document.getElementById('lbtn');
+  if(!e||!p){err.textContent='Email और Password जरूरी!';return;}
+  err.textContent='🔄 Login...';btn.disabled=true;
+  if(window._fbSignIn){
+    window._fbSignIn(e,p).then(()=>err.textContent='').catch(er=>{
+      btn.disabled=false;
+      err.textContent=er.code==='auth/invalid-credential'||er.code==='auth/wrong-password'?'❌ Email/Password गलत!':'❌ '+er.message;
+    });
+  } else setTimeout(()=>{btn.disabled=false;err.textContent='Firebase load करें, refresh करें।';},1500);
+}
+function doLogout(){if(confirm('Logout?')&&window._fbSignOut)window._fbSignOut();}
+function doReset(){const e=prompt('Email:');if(e&&window._fbReset)window._fbReset(e).then(()=>alert('✅ Reset email भेजा!')).catch(er=>alert('Error: '+er.message));}
+
+window._onAuth=async function(user){
+  if(user){
+    document.getElementById('lw').style.display='none';
+    document.getElementById('app').style.display='block';
+    document.getElementById('lbtn').disabled=false;
+    if(window._fbGetUsers){
+      const us=await window._fbGetUsers();
+      curUD=us[user.uid]||null;
+      if(!curUD){
+        // Only the FIRST user (no users exist) becomes admin, rest are staff
+        const existingUsers=await window._fbGetUsers();
+        const isFirst=Object.keys(existingUsers).length<=1;
+        curUD={role:isFirst?'admin':'staff',nm:user.email.split('@')[0].toUpperCase(),fc:'',email:user.email};
+        if(window._fbSaveUser)await window._fbSaveUser(user.uid,{...curUD,createdAt:new Date().toISOString()});
+      }
+    } else curUD={role:'admin',nm:'RAMESH',fc:'FC 624',email:user.email};
+    const isAdm=curUD.role==='admin';
+    const b=document.getElementById('ubadge');
+    b.textContent=(isAdm?'👑 Admin: ':'👮 ')+(curUD.nm||curUD.email||'');
+    b.className='ubadge'+(isAdm?' adm':'');
+    ['btnadd','btnstf','btnus'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display=isAdm?'inline-block':'none';});
+    await loadFB();
+  } else {
+    document.getElementById('lw').style.display='flex';
+    document.getElementById('app').style.display='none';
+    curUD=null;
+  }
+};
+
+// ── DATA ──
+async function loadFB(){
+  toast('🔄 Data लोड हो रहा है...');
+  if(window._fbLoadStaff){const sl=await window._fbLoadStaff();if(sl&&sl.length)staffList=sl;}
+  fillStaffDropdowns();
+  if(window._fbLoad){
+    const d=await window._fbLoad();
+    if(d&&d.length>0){recs=d;try{localStorage.setItem(KEY,JSON.stringify(recs));}catch(e){}}
+    else{await window._fbSave(recs);toast('☁️ Firebase पर save हो गया!');}
+  }
+  updStats();render();todayAlert();toast('✅ '+recs.length+' records लोड!');
+}
+function loadLocal(){try{const s=localStorage.getItem(KEY);if(s){const p=JSON.parse(s);if(p.length>=INIT.length)return p;}}catch(e){}return JSON.parse(JSON.stringify(INIT));}
+async function save(d){
+  recs=d;try{localStorage.setItem(KEY,JSON.stringify(d));}catch(e){}
+  if(window._fbSave&&!saving){saving=true;const ok=await window._fbSave(d);saving=false;if(ok)toast('☁️ Firebase save!');}
+}
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('on');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('on'),2500);}
+
+// ── STAFF HELPERS ──
+function fillStaffDropdowns(){
+  ['fst','srs'].forEach(sid=>{
+    const sel=document.getElementById(sid);if(!sel)return;
+    const prev=sel.value;
+    sel.innerHTML=sid==='fst'?'<option value="">-- चुनें --</option>':'<option value="">-- Staff चुनें --</option>';
+    staffList.forEach(s=>{
+      const opt=document.createElement('option');
+      opt.value=s.fc; // Use FC as value for easy matching
+      opt.textContent=s.nm+' ('+s.fc+')';
+      sel.appendChild(opt);
+    });
+    if(prev)sel.value=prev;
+  });
+}
+function onStaffChange(sel){
+  const fc=sel.value;
+  document.getElementById('ffc').value=fc;
+}
+function getStaffByFC(fc){return staffList.find(s=>s.fc===fc);}
+function getStaffPhone(fc){const s=getStaffByFC(fc);return s?s.ph:null;}
+function getStaffName(fc){const s=getStaffByFC(fc);return s?s.nm:fc;}
+
+// ── UTILS ──
+function isExp(ds){if(!ds)return false;const p=ds.split('.');if(p.length!==3)return false;return new Date(+p[2],+p[1]-1,+p[0])<new Date(new Date().setHours(0,0,0,0));}
+function isToday(ds){if(!ds)return false;const p=ds.split('.');if(p.length!==3)return false;const t=new Date();return+p[0]===t.getDate()&&+p[1]===(t.getMonth()+1)&&+p[2]===t.getFullYear();}
+function parseDMY(ds){if(!ds)return null;const p=ds.split('.');if(p.length!==3)return null;return new Date(+p[2],+p[1]-1,+p[0]);}
+function ch(c){return CM[c]||c||'';}
+function todHi(){const d=new Date();return d.getDate()+' '+MH[d.getMonth()]+' '+d.getFullYear();}
+function todStr(){const d=new Date();return d.getDate().toString().padStart(2,'0')+'.'+(d.getMonth()+1).toString().padStart(2,'0')+'.'+d.getFullYear();}
+function vis(){
+  const isAdm=curUD&&curUD.role==='admin';
+  if(isAdm)return recs;
+  const fc=curUD&&curUD.fc;
+  return fc?recs.filter(r=>r.fc===fc):recs;
+}
+function getCN(r){if(r.bnam&&r.name&&r.bnam!==r.name)return r.bnam+' — '+r.name;return r.bnam||r.name||'';}
+
+// ── TABS ──
+function setTab(t){
+  curTab=t;document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
+  const el=document.getElementById('tab-'+t);if(el)el.classList.add('on');render();
+}
+function filtered(){
+  const q=document.getElementById('srch').value.toLowerCase();
+  return vis().filter(r=>{
+    const cn=getCN(r);
+    const ms=!q||cn.toLowerCase().includes(q)||(r.fc||'').toLowerCase().includes(q)||(r.person||'').toLowerCase().includes(q)||(r.court||'').toLowerCase().includes(q)||(r.staff||'').toLowerCase().includes(q)||(r.mobile||'').includes(q);
+    let mf=true;
+    if(curTab==='pending')mf=r.status!=='completed';
+    else if(curTab==='today')mf=isToday(r.nextDate)&&r.status!=='completed';
+    else if(curTab==='done')mf=r.status==='completed';
+    else if(curTab==='all')mf=true;
+    else mf=r.type===curTab;
+    return ms&&mf;
+  });
+}
+
+// ── STATS ──
+function todayAlert(){
+  const trs=vis().filter(r=>isToday(r.nextDate)&&r.status!=='completed');
+  const al=document.getElementById('todal');
+  if(trs.length){al.style.display='block';al.innerHTML='⚡ आज <strong>'+trs.length+' वारंट</strong> की पेशी — '+todStr()+' — click करें';}
+  else al.style.display='none';
+}
+function updStats(){
+  const v=vis();
+  const t=v.length,bw=v.filter(r=>r.type==='BW').length,aw=v.filter(r=>r.type==='AW').length;
+  const p=v.filter(r=>r.status!=='completed').length,d=v.filter(r=>r.status==='completed').length;
+  const ex=v.filter(r=>isExp(r.nextDate)&&r.status!=='completed').length;
+  document.getElementById('stats').innerHTML=
+    `<div class="sc s0" onclick="setTab('all')"><div class="sn">${t}</div><div class="sl">कुल</div></div>
+     <div class="sc s1" onclick="setTab('BW')"><div class="sn">${bw}</div><div class="sl">BW जमानती</div></div>
+     <div class="sc s2" onclick="setTab('AW')"><div class="sn">${aw}</div><div class="sl">AW गिरफ्तारी</div></div>
+     <div class="sc s3" onclick="setTab('pending')"><div class="sn">${p}</div><div class="sl">⏳ Pending</div></div>
+     <div class="sc s4" onclick="setTab('done')"><div class="sn">${d}</div><div class="sl">✅ निस्तारित</div></div>
+     <div class="sc s5" onclick="setTab('today')"><div class="sn">${ex}</div><div class="sl">⏰ Expired</div></div>`;
+}
+
+// ── RENDER ──
+function render(){
+  const fr=filtered();
+  document.getElementById('cbadge').textContent=fr.length+' / '+vis().length;
+  const isAdm=curUD&&curUD.role==='admin';
+  const c=document.getElementById('cards');
+  if(!fr.length){c.innerHTML='<div class="empty">कोई रिकॉर्ड नहीं मिला 🔍<br><small style="opacity:.6">दूसरा tab या search try करें</small></div>';return;}
+  c.innerHTML=fr.map(r=>{
+    const tc=r.type.toLowerCase();
+    const ex=isExp(r.nextDate)&&r.status!=='completed';
+    const td=isToday(r.nextDate);
+    const dn=r.status==='completed';
+    const cH=ch(r.court);
+    const cn=getCN(r);
+    const ph=getStaffPhone(r.fc);
+    return `<div class="card ${tc} ${dn?'dk':''} ${ex&&!dn?'ov':''}">
+      <div class="ctop">
+        <div>
+          <div class="cn">${cn}</div>
+          <span class="badge b${tc}">${r.type==='AW'?'AW गिरफ्तारी':r.type==='BW'?'BW जमानती':'NOTICE समन'}</span>
+          ${ex&&!dn?'<span class="badge bov">⏰ EXP</span>':''}
+          ${td&&!dn?'<span class="badge btd">📅 आज</span>':''}
+          ${dn&&r.nistharan?`<span class="bnis">${r.nistharan}</span>`:''}
+        </div>
+        <div style="text-align:right">
+          <div class="cfc">${r.fc||''}</div>
+          <div class="cst">${r.staff||''}</div>
+        </div>
+      </div>
+      <div class="ci">
+        ${cH?`<div>🏛️ ${cH}</div>`:''}
+        ${r.person?`<div>👥 ${formatAccused(r.person)||r.person}</div>`:''}
+        ${r.dateReceived?`<div>📥 प्राप्त: ${r.dateReceived}</div>`:''}
+        ${r.mobile?`<div>📱 ${r.mobile}</div>`:''}
+      </div>
+      ${r.nextDate?`<div class="nd ${ex&&!dn?'ex':''}"><span>🗓️ पेशी: <strong>${r.nextDate}</strong></span>${td&&!dn?'<span style="font-size:0.68rem;font-weight:700;color:#d97706">आज!</span>':''}</div>`:''}
+      ${r.notes?`<div class="nb">📝 ${r.notes}</div>`:''}
+      <div class="cbs">
+        <button class="cb cw" onclick="openW(${r.id})">🏛️ वारंट</button>
+        ${isAdm?`<button class="cb ce" onclick="openEdit(${r.id})">✏️</button>`:''}
+        ${!dn?`<button class="cb co" onclick="openNis(${r.id})">✅ निस्तारण</button>`:`<button class="cb cu" onclick="undoNis(${r.id})">↩️ वापस</button>`}
+        ${ph?`<button class="cb cws" onclick="sendSWA(${r.id})">👮 WA</button>`:''}
+        <button class="cb cwa" onclick="sendWA(${r.id})">📱 WA</button>
+        ${isAdm?`<button class="cb cd" onclick="delRec(${r.id})">🗑️</button>`:''}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ── ACCUSED ──
+function togglePoliceFields(radio){
+  document.getElementById('police-fields').style.display=radio.value==='police'?'block':'none';
+  document.getElementById('retired-fields').style.display=radio.value==='retired'?'block':'none';
+}
+function initAccusedList(val){
+  const list=document.getElementById('acc-list');
+  list.innerHTML='';
+  // val format: "नाम||पिता||पता | नाम2||पिता2||पता2"
+  const parts=val?val.split(' | '):[''];
+  parts.forEach(p=>addAccusedRow(p));
+  // Reset police fields
+  document.querySelectorAll('input[name="acc-type"]').forEach(r=>r.checked=r.value==='civilian');
+  togglePoliceFields({value:'civilian'});
+  ['fp-rank','fp-post','fp-village'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+}
+function addAccusedRow(val){
+  const list=document.getElementById('acc-list');
+  const n=list.children.length+1;
+  const parts=(val||'').split('||');
+  const nm=parts[0]||'',fa=parts[1]||'',ad=parts[2]||'';
+  const div=document.createElement('div');
+  div.className='acc-row';
+  div.style='background:#f8fafc;border-radius:8px;padding:8px;margin-bottom:7px;border:1px solid #e2e8f0';
+  div.innerHTML=`<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
+    <span style="font-size:0.75rem;font-weight:700;color:#0f3460">अभियुक्त ${n}</span>
+    ${n>1?`<button type="button" onclick="this.closest('.acc-row').remove()" style="background:#fee2e2;color:#be123c;border:none;border-radius:5px;padding:2px 7px;cursor:pointer;font-size:0.7rem;font-weight:700">✕ हटाएं</button>`:''}
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:5px">
+    <input class="acc-nm" style="padding:6px 9px;border:1.5px solid #e2e8f0;border-radius:6px;font-size:0.8rem" placeholder="नाम" value="${nm.replace(/"/g,'&quot;')}">
+    <input class="acc-fa" style="padding:6px 9px;border:1.5px solid #e2e8f0;border-radius:6px;font-size:0.8rem" placeholder="पिता का नाम" value="${fa.replace(/"/g,'&quot;')}">
+  </div>
+  <input class="acc-ad" style="width:100%;padding:6px 9px;border:1.5px solid #e2e8f0;border-radius:6px;font-size:0.8rem" placeholder="पता — गांव/मोहल्ला, जिला..." value="${ad.replace(/"/g,'&quot;')}">`;
+  list.appendChild(div);
+}
+function addAccused(){addAccusedRow('');}
+function getAccusedVal(){
+  const rows=document.getElementById('acc-list').querySelectorAll('.acc-row');
+  const parts=[];
+  rows.forEach(row=>{
+    const nm=(row.querySelector('.acc-nm')||{value:''}).value.trim();
+    const fa=(row.querySelector('.acc-fa')||{value:''}).value.trim();
+    const ad=(row.querySelector('.acc-ad')||{value:''}).value.trim();
+    if(nm||fa||ad)parts.push(nm+'||'+fa+'||'+ad);
+  });
+  // Add police info if applicable
+  const pType=document.querySelector('input[name="acc-type"]:checked');
+  const pt=pType?pType.value:'civilian';
+  let pInfo='';
+  if(pt==='police'){
+    const rank=(document.getElementById('fp-rank')||{value:''}).value.trim();
+    const post=(document.getElementById('fp-post')||{value:''}).value.trim();
+    if(rank||post)pInfo=' [पुलिस: '+rank+(post?' '+post:'')+']';
+  } else if(pt==='retired'){
+    const vill=(document.getElementById('fp-village')||{value:''}).value.trim();
+    if(vill)pInfo=' [रिटायर्ड, '+vill+']';
+  }
+  return parts.join(' | ')+(pInfo&&parts.length>0?parts[parts.length-1]+=pInfo:'');
+}
+function formatAccused(val){
+  if(!val)return '';
+  // Convert "नाम||पिता||पता" to readable format
+  return val.split(' | ').map(p=>{
+    const pts=p.split('||');
+    const nm=pts[0]||'';const fa=pts[1]||'';const ad=pts[2]||'';
+    let str=nm;
+    if(fa)str+=' S/O '+fa;
+    if(ad)str+=' R/O '+ad;
+    return str;
+  }).join(', ');
+}
+
+// ── CRUD ──
+function openAdd(){
+  if(curUD&&curUD.role!=='admin'){alert('❌ Admin only!');return;}
+  document.getElementById('etit').textContent='➕ नई एंट्री';
+  document.getElementById('eid').value='';
+  ['fbn','fn','ffc','fdr','fnd','fm','fno','fct2'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+  document.getElementById('ft').value='BW';
+  document.getElementById('fst').value='';
+  document.getElementById('fct').value='';
+  document.getElementById('fco').style.display='none';
+  initAccusedList('');
+  document.getElementById('em').classList.add('open');
+}
+function openEdit(id){
+  if(curUD&&curUD.role!=='admin'){alert('❌ Admin only!');return;}
+  const r=recs.find(x=>x.id===id);if(!r)return;
+  document.getElementById('etit').textContent='✏️ संपादन';
+  document.getElementById('eid').value=id;
+  document.getElementById('fbn').value=r.bnam||'';
+  document.getElementById('fn').value=r.name||'';
+  document.getElementById('ft').value=r.type||'BW';
+  document.getElementById('ffc').value=r.fc||'';
+  // Set staff by FC
+  const stfSel=document.getElementById('fst');
+  stfSel.value=r.fc||'';
+  const kn=['JM SDS','ACJM SDS','ADJ SDS','DJ COURT CHURU','ADJ SC-ST CHURU','ADJ SC ST CHURU','JJB COURT CHURU','ADJ S ELEC CHURU','POCSO COURT CHURU'];
+  if(kn.includes(r.court)){document.getElementById('fct').value=r.court;document.getElementById('fco').style.display='none';}
+  else if(r.court){document.getElementById('fct').value='OTHER';document.getElementById('fct2').value=r.court;document.getElementById('fco').style.display='block';}
+  initAccusedList(r.person||'');
+  // Restore police type if any
+  if(r.person&&r.person.includes('[पुलिस:')){
+    document.querySelector('input[name="acc-type"][value="police"]').checked=true;
+    togglePoliceFields({value:'police'});
+  } else if(r.person&&r.person.includes('[रिटायर्ड,')){
+    document.querySelector('input[name="acc-type"][value="retired"]').checked=true;
+    togglePoliceFields({value:'retired'});
+  }
+  document.getElementById('fdr').value=r.dateReceived||'';
+  document.getElementById('fnd').value=r.nextDate||'';
+  document.getElementById('fm').value=r.mobile||'';
+  document.getElementById('fno').value=r.notes||'';
+  document.getElementById('em').classList.add('open');
+}
+async function saveRec(){
+  const id=document.getElementById('eid').value;
+  const fc=document.getElementById('ffc').value.trim();
+  const stfFC=document.getElementById('fst').value||fc;
+  const court=document.getElementById('fct').value==='OTHER'?document.getElementById('fct2').value.trim():document.getElementById('fct').value;
+  const bnam=document.getElementById('fbn').value.trim();
+  const fn=document.getElementById('fn').value.trim();
+  const rec={
+    bnam,name:fn||bnam,type:document.getElementById('ft').value,
+    fc:stfFC,staff:getStaffName(stfFC),
+    court,person:getAccusedVal(),
+    dateReceived:document.getElementById('fdr').value.trim(),
+    nextDate:document.getElementById('fnd').value.trim(),
+    mobile:document.getElementById('fm').value.trim(),
+    notes:document.getElementById('fno').value.trim(),
+    status:'pending'
+  };
+  if(!rec.name&&!rec.bnam){alert('केस नाम जरूरी!');return;}
+  let nr=[...recs];
+  if(id){const i=nr.findIndex(x=>x.id==id);if(i>=0)nr[i]={...nr[i],...rec};}
+  else{const mx=nr.reduce((m,r)=>Math.max(m,r.id||0),0);nr.push({id:mx+1,...rec});}
+  await save(nr);closeM('em');updStats();render();todayAlert();toast('✅ Save हो गया!');
+}
+async function delRec(id){
+  if(!confirm('हटाना है?'))return;
+  await save(recs.filter(x=>x.id!==id));updStats();render();toast('🗑️ Delete!');
+}
+
+// ── NISTHARAN ──
+function openNis(id){
+  const r=recs.find(x=>x.id===id);if(!r)return;
+  nisId=id;
+  document.getElementById('nis-name').textContent=getCN(r)||r.name;
+  document.getElementById('nis-info').textContent=(r.type==='AW'?'AW गिरफ्तारी':r.type==='BW'?'BW जमानती':'NOTICE')+' | '+(r.nextDate||'-')+' | '+(r.staff||'-');
+  document.getElementById('nism').classList.add('open');
+}
+async function confirmNis(type){
+  if(!nisId)return;
+  const nr=recs.map(r=>r.id===nisId?{...r,status:'completed',nistharan:type,nistharanDate:todStr()}:r);
+  await save(nr);closeM('nism');updStats();render();todayAlert();
+  toast('✅ '+type+' — निस्तारित!');nisId=null;
+}
+async function undoNis(id){
+  const nr=recs.map(r=>r.id===id?{...r,status:'pending',nistharan:'',nistharanDate:''}:r);
+  await save(nr);updStats();render();toast('↩️ Pending में वापस!');
+}
+
+// ── WHATSAPP ──
+function sendWA(id){
+  const r=recs.find(x=>x.id===id);if(!r)return;
+  let mob=r.mobile;
+  if(!mob){mob=prompt('📱 '+getCN(r)+'\n\nमोबाइल नंबर (10 अंक):','');
+    if(!mob||mob.replace(/\D/g,'').length<10){alert('सही नंबर!');return;}
+    mob=mob.replace(/\D/g,'');const nr=[...recs];const i=nr.findIndex(x=>x.id===id);if(i>=0){nr[i].mobile=mob;save(nr);}
+  }
+  const ct=ch(r.court)||r.court;
+  window.open('https://wa.me/91'+mob+'?text='+encodeURIComponent('🔔 *थाना भानीपुरा — कोर्ट रिमाइंडर*\n\n📋 *केस:* '+getCN(r)+'\n⚖️ *प्रकार:* '+(r.type==='AW'?'AW गिरफ्तारी':r.type==='BW'?'BW जमानती':'NOTICE/समन')+'\n🏛️ *न्यायालय:* '+ct+'\n📅 *तारीख पेशी:* '+r.nextDate+'\n👥 *व्यक्ति:* '+(r.person||'-')+'\n\nकृपया निर्धारित तारीख पर उपस्थित हों।\n\n— थाना भानीपुरा'));
+}
+function sendSWA(id){
+  const r=recs.find(x=>x.id===id);if(!r)return;
+  const ph=getStaffPhone(r.fc);if(!ph){alert('नंबर नहीं मिला!');return;}
+  const ct=ch(r.court)||r.court;
+  window.open('https://wa.me/'+ph+'?text='+encodeURIComponent('🔔 *थाना भानीपुरा — वारंट रिमाइंडर*\n\n📋 *केस:* '+getCN(r)+'\n⚖️ *प्रकार:* '+(r.type==='AW'?'AW गिरफ्तारी':r.type==='BW'?'BW जमानती':'NOTICE/समन')+'\n🏛️ *न्यायालय:* '+ct+'\n📅 *तारीख पेशी :* '+r.nextDate+'\n👥 *व्यक्ति:* '+(r.person||'-')+'\n\nकृपया पेशी से पूर्व वारंट निस्तारण कर अवगत करवाएं।\n\n— 👮 रमेश गोदारा FC 624, थाना भानीपुरा'));
+}
+
+// ── EXPORT ──
+function exportCSV(){
+  const v=vis();
+  const hdr=['ID','सरकार बनाम','FIR नं.','प्रकार','FC','Staff','न्यायालय','अभियुक्त','प्राप्ति','पेशी तारीख','मोबाइल','नोट्स','स्थिति','निस्तारण'];
+  const rows=v.map(r=>[r.id,'"'+(r.bnam||'')+'"','"'+(r.name||'')+'"',r.type,r.fc,r.staff,'"'+(r.court||'')+'"','"'+(r.person||'')+'"',r.dateReceived,r.nextDate,r.mobile,'"'+(r.notes||'')+'"',r.status,r.nistharan||''].join(','));
+  const a=document.createElement('a');
+  a.href='data:text/csv;charset=utf-8,\uFEFF'+encodeURIComponent([hdr.join(','),...rows].join('\n'));
+  a.download='bhanipura_'+new Date().toISOString().slice(0,10)+'.csv';a.click();
+}
+function saveFile(){
+  const html=document.documentElement.outerHTML;
+  const s=html.indexOf('const INIT='),e=html.indexOf(';\nconst KEY=');
+  if(s<0||e<0){toast('❌ Save error!');return;}
+  const blob=new Blob([html.substring(0,s+11)+JSON.stringify(recs,null,0)+html.substring(e)],{type:'text/html;charset=utf-8'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  const d=new Date();a.download='bhanipura_'+d.getDate().toString().padStart(2,'0')+(d.getMonth()+1).toString().padStart(2,'0')+d.getFullYear()+'.html';
+  a.click();URL.revokeObjectURL(a.href);setTimeout(()=>toast('✅ File save!'),300);
+}
+
+// ── MONTHLY REPORT ──
+function openMonthly(){const d=new Date();document.getElementById('rmo').value=d.getMonth();document.getElementById('ryr').value=d.getFullYear();document.getElementById('ro').innerHTML='';document.getElementById('mm').classList.add('open');}
+function genRpt(){
+  const mo=parseInt(document.getElementById('rmo').value),yr=parseInt(document.getElementById('ryr').value);
+  const mn=MH[mo]+' '+yr;const v=vis();
+  const ml=v.filter(r=>{const d=parseDMY(r.nextDate);return d&&d.getMonth()===mo&&d.getFullYear()===yr;});
+  const rc=v.filter(r=>{const d=parseDMY(r.dateReceived);return d&&d.getMonth()===mo&&d.getFullYear()===yr;});
+  const bw=ml.filter(r=>r.type==='BW').length,aw=ml.filter(r=>r.type==='AW').length;
+  const nt=ml.filter(r=>r.type==='NOTICE').length,dn=ml.filter(r=>r.status==='completed').length;
+  const pn=ml.filter(r=>r.status!=='completed').length;
+  const bt=ml.filter(r=>r.nistharan==='बाद तामिल').length;
+  const at=ml.filter(r=>r.nistharan==='अदम तामिल').length;
+  const sm={};ml.forEach(r=>{const s=r.staff||'अज्ञात';if(!sm[s])sm[s]={t:0,bw:0,aw:0,nt:0,dn:0,pn:0,bt:0,at:0};sm[s].t++;if(r.type==='BW')sm[s].bw++;if(r.type==='AW')sm[s].aw++;if(r.type==='NOTICE')sm[s].nt++;if(r.status==='completed'){sm[s].dn++;if(r.nistharan==='बाद तामिल')sm[s].bt++;if(r.nistharan==='अदम तामिल')sm[s].at++;}else sm[s].pn++;});
+  const cm2={};ml.forEach(r=>{const c=r.court||'अज्ञात';cm2[c]=(cm2[c]||0)+1;});
+  let h=`<div class="rpt">
+  <div class="rsec"><h4>📅 ${mn} — सारांश</h4><div class="rgrid">
+    <div class="rc"><div class="rn" style="color:#0f172a">${ml.length}</div><div class="rl">कुल</div></div>
+    <div class="rc"><div class="rn" style="color:#16a34a">${bw}</div><div class="rl">BW</div></div>
+    <div class="rc"><div class="rn" style="color:#dc2626">${aw}</div><div class="rl">AW</div></div>
+    <div class="rc"><div class="rn" style="color:#d97706">${nt}</div><div class="rl">Notice</div></div>
+    <div class="rc"><div class="rn" style="color:#059669">${dn}</div><div class="rl">✅ निस्तारित</div></div>
+    <div class="rc"><div class="rn" style="color:#d97706">${pn}</div><div class="rl">⏳ Pending</div></div>
+    <div class="rc"><div class="rn" style="color:#9f7aea">${rc.length}</div><div class="rl">📥 नए</div></div>
+    <div class="rc"><div class="rn" style="color:#16a34a">${bt}</div><div class="rl">बाद तामिल</div></div>
+    <div class="rc"><div class="rn" style="color:#dc2626">${at}</div><div class="rl">अदम तामिल</div></div>
+  </div></div>
+  <div class="rsec"><h4>👮 Staff-wise निस्तारण</h4>
+  <table class="rtbl"><tr><th>Staff</th><th>कुल</th><th>BW</th><th>AW</th><th>Not.</th><th>✅</th><th>बाद</th><th>अदम</th><th>⏳</th></tr>
+  ${Object.entries(sm).sort((a,b)=>b[1].t-a[1].t).map(([s,v])=>`<tr><td><strong>${s}</strong></td><td>${v.t}</td><td>${v.bw}</td><td>${v.aw}</td><td>${v.nt}</td><td style="color:#059669">${v.dn}</td><td style="color:#16a34a">${v.bt}</td><td style="color:#dc2626">${v.at}</td><td style="color:#d97706">${v.pn}</td></tr>`).join('')}
+  </table></div>
+  <div class="rsec"><h4>🏛️ Court-wise</h4>
+  <table class="rtbl"><tr><th>न्यायालय</th><th>वारंट</th></tr>
+  ${Object.entries(cm2).sort((a,b)=>b[1]-a[1]).map(([c,n])=>`<tr><td>${ch(c)||c}</td><td><strong>${n}</strong></td></tr>`).join('')}
+  </table></div>
+  ${pn?`<div class="rsec"><h4>⏳ Pending — ${mn}</h4>
+  <table class="rtbl"><tr><th>केस</th><th>Type</th><th>Staff</th><th>तारीख</th></tr>
+  ${ml.filter(r=>r.status!=='completed').map(r=>`<tr><td><strong>${getCN(r)}</strong><br><small style="color:#64748b">${r.person||''}</small></td><td><span class="badge b${r.type.toLowerCase()}">${r.type}</span></td><td>${r.staff||'-'}</td><td style="${isExp(r.nextDate)?'color:#dc2626;font-weight:700':''}">${r.nextDate||'-'}</td></tr>`).join('')}
+  </table></div>`:''}
+  </div>
+  <button class="rpb" onclick="prtRpt('${mn}')">🖨️ Print Report</button>`;
+  document.getElementById('ro').innerHTML=h;
+}
+function prtRpt(mn){
+  const c=document.getElementById('ro').innerHTML;
+  const css='body{font-family:Arial,sans-serif;padding:15px;font-size:12px}table{width:100%;border-collapse:collapse;margin-bottom:12px}th{background:#0f3460;color:white;padding:6px 8px;font-size:11px}td{padding:5px 8px;border-bottom:1px solid #eee}h4{margin:9px 0 5px;color:#333}.rgrid{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:11px}.rc{border:1px solid #ddd;padding:8px;border-radius:5px;text-align:center;min-width:70px}.rn{font-size:1.2rem;font-weight:900}.rl{font-size:.65rem;color:#666}.badge{padding:2px 6px;border-radius:9px;font-size:10px;font-weight:700}button{display:none}.hdr-rpt{text-align:center;background:#0f3460;color:white;padding:10px;border-radius:7px;margin-bottom:12px}.hdr-rpt h2{font-size:13px;font-weight:900}.hdr-rpt p{font-size:10px;opacity:.85}';
+  const w=window.open('','_blank');
+  w.document.open();
+  w.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Monthly Report '+mn+'</title><style>'+css+'</style></head><body><div class="hdr-rpt"><h2>📊 BHANIPURA COURT REMINDER — Monthly Report</h2><p>'+mn+' | रमेश गोदारा, FC 624 | पुलिस थाना भानीपुरा, जिला चूरू, राजस्थान</p></div>'+c+'</body></html>');
+  w.document.close();pw=w;setTimeout(()=>w.print(),600);
+}
+
+// ── STAFF REPORT ──
+function openSR(){
+  fillStaffDropdowns();
+  document.getElementById('sro').innerHTML='';
+  if(curUD&&curUD.role==='staff'&&curUD.fc)document.getElementById('srs').value=curUD.fc;
+  document.getElementById('srm').classList.add('open');
+}
+function genSR(){
+  const fc=document.getElementById('srs').value;
+  const tf=document.getElementById('srt').value;
+  const stf=getStaffByFC(fc);
+  if(!fc){alert('Staff चुनें!');return;}
+  // Match records by fc
+  let d=recs.filter(r=>r.fc===fc);if(tf!=='all')d=d.filter(r=>r.type===tf);
+  const t=d.length,bw=d.filter(r=>r.type==='BW').length,aw=d.filter(r=>r.type==='AW').length;
+  const nt=d.filter(r=>r.type==='NOTICE').length,dn=d.filter(r=>r.status==='completed').length;
+  const pn=d.filter(r=>r.status!=='completed').length;
+  const ex=d.filter(r=>isExp(r.nextDate)&&r.status!=='completed').length;
+  const bt=d.filter(r=>r.nistharan==='बाद तामिल').length;
+  const at=d.filter(r=>r.nistharan==='अदम तामिल').length;
+  const pct=t?Math.round(dn/t*100):0;
+  const nm=stf?stf.nm:fc;
+  const ph=stf?stf.ph:'';
+  const pnd=d.filter(r=>r.status!=='completed'),cmp=d.filter(r=>r.status==='completed');
+  const html=`
+  <div class="srh"><h2>👮 ${nm} (${fc}) — वारंट रिपोर्ट</h2><p>थाना भानीपुरा | ${todHi()}</p></div>
+  <div class="srst">
+    <div class="srsc"><div class="n">${t}</div><div class="l">कुल</div></div>
+    <div class="srsc"><div class="n" style="color:#059669">${dn}</div><div class="l">✅ निस्तारित</div></div>
+    <div class="srsc"><div class="n" style="color:#d97706">${pn}</div><div class="l">⏳ शेष</div></div>
+    <div class="srsc"><div class="n" style="color:#16a34a">${bw}</div><div class="l">BW</div></div>
+    <div class="srsc"><div class="n" style="color:#dc2626">${aw}</div><div class="l">AW</div></div>
+    <div class="srsc"><div class="n" style="color:#d97706">${nt}</div><div class="l">Notice</div></div>
+    <div class="srsc"><div class="n" style="color:#16a34a">${bt}</div><div class="l">बाद तामिल</div></div>
+    <div class="srsc"><div class="n" style="color:#dc2626">${at}</div><div class="l">अदम तामिल</div></div>
+    <div class="srsc"><div class="n" style="color:#dc2626">${ex}</div><div class="l">⏰ Expired</div></div>
+  </div>
+  <div class="pb"><div class="pn">${pct}%</div><div class="pl">वारंट निस्तारण दर (Completion Rate)</div>
+  <div class="pbar"><div class="pbar-f" style="width:${pct}%"></div></div></div>
+  ${pnd.length?`<div style="margin-bottom:11px">
+  <h4 style="font-size:0.82rem;font-weight:800;color:#dc2626;margin-bottom:6px;border-bottom:2px solid #dc2626;padding-bottom:3px">⏳ Pending (${pnd.length})</h4>
+  <table class="rtbl"><tr><th>#</th><th>केस / अभियुक्त</th><th>Type</th><th>पेशी</th><th>न्यायालय</th></tr>
+  ${pnd.map((r,i)=>`<tr><td>${i+1}</td><td><strong>${getCN(r)}</strong><br><small style="color:#64748b">${r.person||''}</small></td><td><span class="badge b${r.type.toLowerCase()}">${r.type}</span></td><td style="${isExp(r.nextDate)?'color:#dc2626;font-weight:700':''}">${r.nextDate||'-'}</td><td style="font-size:0.7rem">${ch(r.court)||r.court||'-'}</td></tr>`).join('')}
+  </table></div>`:''}
+  ${cmp.length?`<div style="margin-bottom:11px">
+  <h4 style="font-size:0.82rem;font-weight:800;color:#059669;margin-bottom:6px;border-bottom:2px solid #059669;padding-bottom:3px">✅ निस्तारित (${cmp.length})</h4>
+  <table class="rtbl"><tr><th>#</th><th>केस</th><th>Type</th><th>निस्तारण</th></tr>
+  ${cmp.map((r,i)=>`<tr><td>${i+1}</td><td><strong>${getCN(r)}</strong></td><td><span class="badge b${r.type.toLowerCase()}">${r.type}</span></td><td style="font-weight:700;color:${r.nistharan==='बाद तामिल'?'#16a34a':'#dc2626'}">${r.nistharan||'-'}</td></tr>`).join('')}
+  </table></div>`:''}
+  <div style="display:flex;flex-direction:column;gap:6px">
+    <button class="rpb" onclick="prtSR('${nm}','${fc}')">🖨️ Print Report</button>
+    ${ph?`<button class="rpb2" onclick="srWA('${nm}','${fc}','${ph}',${t},${dn},${pn},${bt},${at})">📱 WhatsApp पर भेजें</button>`:''}
+  </div>`;
+  document.getElementById('sro').innerHTML=html;
+}
+function prtSR(nm,fc){
+  const c=document.getElementById('sro').innerHTML;
+  const css='body{font-family:Arial,sans-serif;padding:15px;font-size:12px}table{width:100%;border-collapse:collapse;margin-bottom:12px}th{background:#0f3460;color:white;padding:6px 8px;font-size:11px}td{padding:5px 8px;border-bottom:1px solid #eee}.srh{background:#0f3460;color:white;padding:13px;border-radius:7px;margin-bottom:11px;text-align:center}.srst{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:11px}.srsc{border:1px solid #ddd;padding:8px;border-radius:6px;text-align:center;min-width:70px}.n{font-size:1.2rem;font-weight:900}.l{font-size:.65rem;color:#666}.pb{border:1px solid #ddd;padding:9px;border-radius:7px;margin-bottom:10px;text-align:center}.pn{font-size:1.5rem;font-weight:900}.pbar{background:#e2e8f0;border-radius:5px;height:6px;margin-top:4px;overflow:hidden}.pbar-f{background:#16a34a;height:100%}.badge{padding:2px 6px;border-radius:9px;font-size:10px;font-weight:700}button{display:none}h4{margin:8px 0 5px}.footer{text-align:center;margin-top:15px;padding-top:8px;border-top:1px solid #ddd;font-size:10px;color:#666}';
+  const w=window.open('','_blank');
+  w.document.open();
+  w.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Staff Report - '+nm+'</title><style>'+css+'</style></head><body>'+c+'<div class="footer">रमेश गोदारा | FC 624 | Police Station BHANIPURA, Distt. Churu, Rajasthan | '+todHi()+'</div></body></html>');
+  w.document.close();setTimeout(()=>w.print(),600);
+}
+function srWA(nm,fc,ph,t,dn,pn,bt,at){
+  window.open('https://wa.me/'+ph+'?text='+encodeURIComponent('*📊 थाना भानीपुरा — वारंट निस्तारण रिपोर्ट*\n*'+nm+' ('+fc+')*\n\n📅 *'+todHi()+'*\n\n📋 कुल वारंट: *'+t+'*\n✅ निस्तारित: *'+dn+'*\n  ↳ बाद तामिल: '+bt+'\n  ↳ अदम तामिल: '+at+'\n⏳ शेष: *'+pn+'*\n\nकृपया शेष वारंट का जल्द निस्तारण करें।\n\n— रमेश गोदारा, FC 624\n  थाना भानीपुरा, जिला चूरू'));
+}
+
+// ── STAFF MANAGEMENT ──
+function openStaff(){
+  if(!(curUD&&curUD.role==='admin')){alert('Admin only!');return;}
+  renderStaffList();document.getElementById('stfm').classList.add('open');
+}
+function renderStaffList(){
+  const el=document.getElementById('stf-list');
+  if(!el)return;
+  el.innerHTML=staffList.map((s,i)=>`
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 9px;background:#f8fafc;border-radius:7px;margin-bottom:4px">
+      <div><div style="font-weight:700;font-size:0.8rem">${s.nm}</div><div style="font-size:0.68rem;color:#64748b">${s.fc} | 📱 ${s.ph||'-'}</div></div>
+      <button onclick="delStaff(${i})" style="background:#fee2e2;color:#be123c;border:none;border-radius:5px;padding:3px 7px;cursor:pointer;font-size:0.7rem;font-weight:700">🗑️</button>
+    </div>`).join('');
+}
+async function addStaff(){
+  const nm=document.getElementById('snm').value.trim(),fc=document.getElementById('sfc').value.trim(),ph=document.getElementById('sph').value.trim();
+  if(!nm||!fc){alert('नाम और FC जरूरी!');return;}
+  staffList.push({nm,fc,ph});
+  if(window._fbSaveStaff)await window._fbSaveStaff(staffList);
+  fillStaffDropdowns();renderStaffList();
+  document.getElementById('snm').value='';document.getElementById('sfc').value='';document.getElementById('sph').value='';
+  toast('✅ Staff जुड़ गया!');
+}
+async function delStaff(i){
+  if(!confirm('हटाना है?'))return;
+  staffList.splice(i,1);
+  if(window._fbSaveStaff)await window._fbSaveStaff(staffList);
+  fillStaffDropdowns();renderStaffList();toast('🗑️ Staff हटाया!');
+}
+
+// ── USER MANAGEMENT ──
+function openUsers(){if(!(curUD&&curUD.role==='admin')){alert('Admin only!');return;}loadUsers();document.getElementById('um').classList.add('open');}
+async function loadUsers(){
+  const us=await window._fbGetUsers();const el=document.getElementById('ul');
+  const en=Object.entries(us);
+  if(!en.length){el.innerHTML='<p style="text-align:center;color:#64748b;font-size:0.78rem;padding:10px">कोई user नहीं</p>';return;}
+  el.innerHTML=en.map(([uid,u])=>`<div class="ui"><div><div class="ui-n">${u.nm||u.email||uid} ${u.role==='admin'?'👑':''}</div><div class="ui-r">${u.fc||''} | ${u.role} | ${u.email||''}</div></div><button class="udel" onclick="delUser('${uid}')">🗑️</button></div>`).join('');
+}
+async function addUser(){
+  const e=document.getElementById('nue').value.trim(),p=document.getElementById('nup').value;
+  const n=document.getElementById('nun').value.trim(),fc=document.getElementById('nufc').value,role=document.getElementById('nur').value;
+  const err=document.getElementById('uerr');
+  if(!e||!p||!n){err.textContent='सभी fields जरूरी!';return;}
+  if(p.length<6){err.textContent='Password 6+ chars!';return;}
+  err.textContent='🔄 बना रहे हैं...';
+  try{
+    const cr=await window._fbCreateUser(e,p);
+    await window._fbSaveUser(cr.user.uid,{nm:n,fc,role,email:e,createdAt:new Date().toISOString()});
+    err.style.color='#16a34a';err.textContent='✅ User बन गया!';
+    ['nue','nup','nun','nufc'].forEach(id=>document.getElementById(id).value='');
+    loadUsers();setTimeout(()=>{err.textContent='';err.style.color='#dc2626';},2000);
+  }catch(er){err.style.color='#dc2626';err.textContent=er.code==='auth/email-already-in-use'?'❌ Email exists!':'❌ '+er.message;}
+}
+async function delUser(uid){if(!confirm('हटाना?'))return;await window._fbDelUser(uid);loadUsers();}
+
+// ── WARRANT GENERATOR ──
+function openW(id){
+  curRec=recs.find(x=>x.id===id);if(!curRec)return;
+  curWT=curRec.type==='NOTICE'?'SUMMON':curRec.type==='AW'?'AW':'BW';
+  document.getElementById('ba').value='';document.getElementById('bp').checked=true;
+  document.getElementById('wa').value='';document.getElementById('wf').value='';
+  document.getElementById('wad').value=formatAccused(curRec.person||'')||curRec.person||'';document.getElementById('wdh').value='341 IPC';
+  document.getElementById('wdw').innerHTML='';
+  const cH=ch(curRec.court)||curRec.court;const cn=getCN(curRec);
+  document.getElementById('winfo').innerHTML=`<strong>${cn}</strong> | <span class="badge b${curRec.type.toLowerCase()}">${curRec.type}</span><br>🏛️ ${cH} | 🗓️ <strong>${curRec.nextDate||'-'}</strong><br>👥 ${formatAccused(curRec.person||'')||curRec.person||'-'}`;
+  selWT(curWT);document.getElementById('wm').classList.add('open');
+}
+function selWT(t){
+  curWT=t;['BW','AW','SUMMON'].forEach(x=>document.getElementById('wt-'+x).classList.remove('on'));
+  document.getElementById('wt-'+t).classList.add('on');
+  document.getElementById('bailbox').style.display=t==='BW'?'block':'none';
+  document.getElementById('wdw').innerHTML='';
+}
+function n2w(n){
+  if(!n||n==0)return 'शून्य';
+  const o=['','एक','दो','तीन','चार','पाँच','छह','सात','आठ','नौ','दस','ग्यारह','बारह','तेरह','चौदह','पन्द्रह','सोलह','सत्रह','अठारह','उन्नीस'];
+  const t=['','','बीस','तीस','चालीस','पचास','साठ','सत्तर','अस्सी','नब्बे'];
+  const x=parseInt(n);
+  if(x<20)return o[x];if(x<100)return t[Math.floor(x/10)]+(x%10?' '+o[x%10]:'');
+  if(x<1000)return o[Math.floor(x/100)]+' सौ'+(x%100?' '+n2w(x%100):'');
+  if(x<100000)return n2w(Math.floor(x/1000))+' हजार'+(x%1000?' '+n2w(x%1000):'');
+  return n.toString();
+}
+function genW(){
+  const r=curRec;if(!r)return;
+  const ba=parseInt(document.getElementById('ba').value)||0,bp=document.getElementById('bp').checked;
+  const age=document.getElementById('wa').value.trim();
+  const fa=document.getElementById('wf').value.trim();
+  const addrRaw=document.getElementById('wad').value.trim();
+  const dh=document.getElementById('wdh').value.trim();
+  const cH=ch(r.court)||r.court;
+  const nd=r.nextDate||'______';
+  const dr=r.dateReceived||'------';
+  const msl=r.fc||'------';
+  const cn=getCN(r);
+
+  // Check if police witness mode
+  const pType=document.querySelector('input[name="acc-type"]:checked');
+  const isPolice=pType&&pType.value==='police';
+  const isRetired=pType&&pType.value==='retired';
+  const rank=(document.getElementById('fp-rank')||{value:''}).value.trim();
+  const post=(document.getElementById('fp-post')||{value:''}).value.trim();
+  const village=(document.getElementById('fp-village')||{value:''}).value.trim();
+
+  // Format accused/witness
+  let accNm='',accFa='',accAd='';
+  if(addrRaw.includes('||')){
+    const pts=addrRaw.split('||');accNm=pts[0]||'';accFa=pts[1]||'';accAd=pts[2]||'';
+  } else {
+    accNm=addrRaw||r.person||'';
+    if(accNm.includes('S/O')){const sp=accNm.split('S/O');accNm=sp[0].trim();accFa=sp[1]?sp[1].split('R/O')[0].trim():'';}
+    if(accFa){const rp=accFa.split('R/O');accFa=rp[0].trim();if(rp[1])accAd=rp[1].trim();}
+  }
+  if(isPolice){accAd=rank+(post?' '+post:'');}
+  if(isRetired){accAd=accAd||(village?'(सेवानिवृत्त) '+village:'');}
+  if(age)accNm=accNm;
+  let accFull=accNm;
+  if(fa||accFa)accFull+=' पिता '+( accFa||fa);
+  if(age)accFull+=' आयु '+age+' वर्ष';
+  if(accAd)accFull+=' पता '+accAd;
+
+  // Check old case (before 3 months)
+  const isOld=(()=>{const pd=parseDMY(r.dateReceived);return pd&&((new Date()-pd)>90*24*60*60*1000);})();
+
+  // Disclaimer
+  const disclaimer=`<div style="margin-top:12px;border:1px dashed #999;padding:6px 8px;font-size:9px;color:#666;text-align:center;line-height:1.5">
+    <em>यह वारंट मूल अधिकृत वारंट नहीं है — यह सिर्फ संबंधित केस एवं न्यायालय द्वारा जारी वारंट की रेफरेंस कॉपी है।</em>
+  </div>`;
+
+  // PS box bottom-right
+  const psBox=`<div style="text-align:right;margin-top:8px;font-size:10px;line-height:1.6">
+    <u><strong>पुलिस थाना भानीपुरा</strong></u><br>
+    मौसूल नंबर: <strong>${msl}</strong><br>
+    प्राप्ति दिनांक: <strong>${dr}</strong>
+  </div>`;
+
+  // Old case warning
+  const oldWarn=isOld?`<div style="border:1.5px solid #dc2626;color:#dc2626;padding:6px 8px;margin:8px 0;font-size:10px;font-weight:700;text-align:center">⚠️ यह प्रकरण पुराना है — तामील आवश्यकरूप से करवाएं।</div>`:'';
+
+  let h='';
+
+  if(curWT==='BW'){
+    // Witness language if police, accused if civilian
+    const isSakshi=isPolice||isRetired;
+    const personLabel=isSakshi?'साक्षी':'अभियुक्त';
+    const personTitle=isSakshi?'<br><small>(वारंटी साक्षी — पुलिस कर्मी)</small>':'';
+    h=`<div class="wdoc" id="pwdoc">
+      <div class="wh">
+        <h2>न्यायालय : ${cH}</h2>
+        <h3>जिला चुरू, (राजस्थान)</h3>
+      </div>
+      <div class="wm">
+        <div class="wml">
+          <div><strong>प्ररूप संख्या-9</strong></div>
+          <div>साखी को लाने के लिये <u><strong>${isSakshi?'जमानती वारण्ट (साक्षी)':'जमानती वारण्ट'}</strong></u></div>
+          <div><strong>(धारा-87 दं.प्र.सं.)</strong></div>
+        </div>
+        <div class="wmr">
+          <div><strong>${cn}</strong></div>
+          <div>अगली तारीख : <strong>${nd}</strong></div>
+        </div>
+      </div>
+      ${oldWarn}
+      <div style="margin-bottom:9px"><u><strong>प्रेषिती,</strong></u></div>
+      <div style="margin:0 0 11px 28px;font-weight:bold;line-height:1.8">
+        पुलिस स्टेशन का प्रभारी अधिकारी/पुलिस स्टेशन अधिकारी<br>
+        पुलिस थाना - BHANIPURA, जिला चुरू, (राजस्थान)
+      </div>
+      <div class="wb">&nbsp;&nbsp;&nbsp;&nbsp;मेरे समक्ष परिवाद/अभियोगपत्र प्रस्तुत किया गया है कि इस न्यायालय के प्रकरण <strong>${cn}</strong> के ${personLabel} <strong>${accFull}</strong> ने${dh?' धारा <strong>'+dh+'</strong> में':''} दंडनीय अपराध किया है (या संदेह है कि उसने किया है) और यह संभाव्य प्रतीत होता है कि उक्त परिवाद के बारे में साक्ष्य दे सकते हैं।</div>
+      <div class="wb">&nbsp;&nbsp;&nbsp;&nbsp;इसलिये आपको प्राधिकृत किया जाता है और आपसे अपेक्षा की जाती है कि आप उक्त ${personLabel} <strong>${accFull}</strong> को गिरफ्तार करें और दिनांक <strong>${nd}</strong> को इस न्यायालय के समक्ष लाएं।</div>
+      <div class="wbx">
+        <div class="wbxt">— जमानत की शर्तें —</div>
+        यदि उक्त ${personLabel} दिनांक <strong>${nd}</strong> को इस न्यायालय के समक्ष उपस्थित होने के लिये ${bp?'स्वयं <strong>।/- रुपये</strong> का व्यक्तिगत बंधपत्र तथा ':''}<strong>₹ ${ba.toLocaleString('en-IN')}/- (${n2w(ba)} रुपये)</strong> की एक प्रतिभूति दे दे, तो उसे छोड़ा जा सकता है।
+      </div>
+      ${isSakshi?`<div style="background:#fef3c7;border:1px solid #d97706;padding:7px 9px;font-size:10px;margin-top:8px;border-radius:5px"><strong>नोट:</strong> साक्षी की गिरफ्तारी की दशा में हथकड़ी नहीं लगाई जावे।<br>यदि साक्षी अपनी मर्जी से हाजिर न होंगे तो न्यायालय से समन प्राप्त करें।</div>`:''}
+      <div class="wsg">
+        <div class="wsb"><div class="wsi">${cH}${personTitle}<br><small>(पीठासीन अधिकारी)</small></div></div>
+        <div class="wsb"><div class="wsi">${cH}<br><small>(न्यायालय की मुद्रा)</small></div></div>
+      </div>
+      ${psBox}
+      ${disclaimer}
+    </div>`;
+
+  } else if(curWT==='AW'){
+    h=`<div class="wdoc" id="pwdoc">
+      <div class="wh">
+        <h2>न्यायालय : ${cH}</h2>
+        <h3>जिला चुरू, (राजस्थान)</h3>
+      </div>
+      <div class="wm">
+        <div class="wml" style="border-color:#dc2626;color:#dc2626">
+          <div><strong>गिरफ्तारी वारण्ट (AW)</strong></div>
+          <div>(धारा-70 दं.प्र.सं.)</div>
+        </div>
+        <div class="wmr">
+          <div><strong>${cn}</strong></div>
+          <div>अगली तारीख : <strong style="color:#dc2626">${nd}</strong></div>
+        </div>
+      </div>
+      ${oldWarn}
+      <div style="margin-bottom:9px"><u><strong>प्रेषिती,</strong></u></div>
+      <div style="margin:0 0 11px 28px;font-weight:bold;line-height:1.8">
+        पुलिस स्टेशन का प्रभारी अधिकारी<br>
+        पुलिस थाना - BHANIPURA, जिला चुरू, (राजस्थान)
+      </div>
+      <div class="wb">&nbsp;&nbsp;&nbsp;&nbsp;मेरे समक्ष परिवाद/अभियोगपत्र प्रस्तुत किया गया है कि इस न्यायालय के प्रकरण <strong>${cn}</strong> के अभियुक्त <strong>${accFull}</strong> ने${dh?' धारा <strong>'+dh+'</strong> में':''} दंडनीय अपराध किया है और न्यायालय को यह विश्वास करने का पर्याप्त कारण है कि यह बिना गिरफ्तारी के न्यायालय में उपस्थित नहीं होगा।</div>
+      <div class="wb">&nbsp;&nbsp;&nbsp;&nbsp;आपको आदेश दिया जाता है कि <strong>${accFull}</strong> को तुरंत गिरफ्तार करें और दिनांक <strong>${nd}</strong> को इस न्यायालय के समक्ष प्रस्तुत करें।</div>
+      <div class="ww" style="border-color:#dc2626;color:#dc2626">
+        ⚠️ यह गिरफ्तारी वारण्ट मूल गिरफ्तारी वारण्ट नहीं है।<br>
+        <small>यह सिर्फ संबंधित केस एवं न्यायालय द्वारा जारी वारण्ट की रेफरेंस कॉपी समझा जाये — कृपया आधिकारिक उपयोग न करें।</small>
+      </div>
+      <div class="wsg">
+        <div class="wsb"><div class="wsi">${cH}<br><small>(पीठासीन अधिकारी)</small></div></div>
+        <div class="wsb"><div class="wsi">${cH}<br><small>(न्यायालय की मुद्रा)</small></div></div>
+      </div>
+      ${psBox}
+    </div>`;
+
+  } else {
+    // SUMMON/NOTICE
+    h=`<div class="wdoc" id="pwdoc">
+      <div class="wh">
+        <h2>न्यायालय : ${cH}</h2>
+        <h3>जिला चुरू, (राजस्थान)</h3>
+      </div>
+      <div class="wm">
+        <div class="wml">
+          <div><strong>समन / Notice</strong></div>
+          <div>(धारा-61 दं.प्र.सं.)</div>
+        </div>
+        <div class="wmr">
+          <div><strong>${cn}</strong></div>
+          <div>तारीख : <strong>${nd}</strong></div>
+        </div>
+      </div>
+      ${oldWarn}
+      <div style="margin-bottom:7px"><u><strong>प्रेषिती,</strong></u></div>
+      <div style="margin:0 0 11px 28px;font-weight:bold;line-height:1.8">${accFull}</div>
+      <div class="wb">&nbsp;&nbsp;&nbsp;&nbsp;आपको सूचित किया जाता है कि न्यायालय में प्रकरण <strong>${cn}</strong> में${dh?' धारा <strong>'+dh+'</strong> के तहत':''} आपकी उपस्थिति आवश्यक है।</div>
+      <div class="wb">&nbsp;&nbsp;&nbsp;&nbsp;आप दिनांक <strong>${nd}</strong> को <strong>${cH}</strong> के समक्ष व्यक्तिगत रूप से उपस्थित हों। <strong>अनुपस्थिति की स्थिति में जमानती वारण्ट जारी किया जा सकता है।</strong></div>
+      <div style="background:#f0fdf4;border:1.5px solid #86efac;padding:8px;margin:8px 0;text-align:center;line-height:1.9;border-radius:5px">
+        📅 पेशी की तारीख: <strong>${nd}</strong><br>🏛️ न्यायालय: <strong>${cH}</strong>
+      </div>
+      <div class="ww">
+        ⚠️ यह समन/Notice मूल दस्तावेज नहीं है — यह रेफरेंस कॉपी है।<br>
+        <small>कृपया निर्धारित तारीख पर उपस्थित हों, अन्यथा गैर-जमानती वारण्ट जारी हो सकता है।</small>
+      </div>
+      <div class="wsg">
+        <div class="wsb"><div class="wsi">${cH}<br><small>(पीठासीन अधिकारी)</small></div></div>
+        <div class="wsb"><div class="wsi">पुलिस थाना भानीपुरा<br><small>(तामीलकर्ता)</small></div></div>
+      </div>
+      ${psBox}
+      ${disclaimer}
+    </div>`;
+  }
+  document.getElementById('wdw').innerHTML=h;
+  document.getElementById('wdw').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+// ── POLICE LETTER / EMAIL ──
+function genPoliceEmail(){
+  const r=curRec;if(!r)return;
+  const cH=ch(r.court)||r.court;
+  const nd=r.nextDate||'------';
+  const cn=getCN(r);
+  const d=new Date();
+  const todayFmt=d.getDate().toString().padStart(2,'0')+'.'+(d.getMonth()+1).toString().padStart(2,'0')+'.'+d.getFullYear();
+  const pType=document.querySelector('input[name="acc-type"]:checked');
+  const isPolice=pType&&pType.value==='police';
+  const rank=(document.getElementById('fp-rank')||{value:''}).value.trim();
+  const post=(document.getElementById('fp-post')||{value:''}).value.trim();
+  const addrRaw=document.getElementById('wad').value.trim()||r.person||'';
+  let accNm='';
+  if(addrRaw.includes('||')){accNm=addrRaw.split('||')[0];}
+  else{accNm=addrRaw.split('S/O')[0].trim()||addrRaw;}
+  const wType=r.type==='BW'?'जमानती वारण्ट':r.type==='AW'?'गिरफ्तारी वारण्ट':'समन/Notice';
+  const dh=(document.getElementById('wdh')||{value:''}).value.trim();
+  const ba=parseInt((document.getElementById('ba')||{value:''}).value)||0;
+
+  // Generate the official letter HTML
+  const letterHTML=`<!DOCTYPE html><html><head><meta charset="UTF-8">
+  <title>पुलिस साक्षी पत्र — ${cn}</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:"Noto Sans Devanagari","Mangal",Arial,serif;padding:15mm 18mm;font-size:11pt;line-height:1.7;color:#000}
+    .title{text-align:center;font-size:13pt;font-weight:bold;text-decoration:underline;margin-bottom:10px;line-height:1.5}
+    .meta{display:flex;justify-content:space-between;margin-bottom:8px;font-size:11pt}
+    .presiti{margin-bottom:8px}
+    .presiti ul{margin-left:20px;list-style:disc}
+    .presiti li{margin-bottom:3px}
+    .suchna{font-size:10.5pt;margin-bottom:10px}
+    .suchna span{text-decoration:underline}
+    table{width:100%;border-collapse:collapse;margin:10px 0}
+    th,td{border:1px solid #000;padding:6px 8px;vertical-align:top;font-size:10.5pt}
+    th{background:#f0f0f0;font-weight:bold;text-align:left}
+    .sig{text-align:right;margin-top:30px;font-size:11pt}
+    .sig p{margin-bottom:4px}
+    .underline{text-decoration:underline}
+    @page{size:A4;margin:0}
+    @media print{body{padding:12mm 15mm}}
+  </style></head><body>
+  <div class="title">|| कार्यालय थानाधिकारी पुलिस थाना भानीपुरा जिला चुरू ||</div>
+  <div class="meta">
+    <div>क्रमांक: <span class="underline">एसपीएल</span></div>
+    <div>दिनांक:-${todayFmt}</div>
+  </div>
+  <div class="presiti">
+    <strong>प्रेषिति:</strong><br>
+    <ul>
+      <li>श्रीमान थानाधिकारी पुलिस थाना सदर जिला चूरू।</li>
+      <li>श्रीमान थानाधिकारी दुधवाखारा जिला चूरू।</li>
+      <li>श्रीमान संचित निरीक्षक महोदय जिला पुलिस लाईन चूरू।</li>
+    </ul>
+  </div>
+  <div class="suchna">
+    <span>सूचनार्थ:</span> माननीय न्यायिक मजिस्ट्रेट महोदय ${cH}<br>
+    प्रेषक:- थानाधिकारी पुलिस थाना भानीपुरा जिला चुरू।
+  </div>
+  <table>
+    <tr>
+      <th>क्र0<br>स0</th>
+      <th>नाम कर्मचारी<br>/अधिकारी</th>
+      <th>सरकार बनाम</th>
+      <th>तारीख<br>पेशी<br>दिनांक</th>
+      <th>वारण्ट का प्रकार</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>
+        <strong>${accNm}</strong><br>
+        ${rank?rank+'<br>':''}${r.fc||''}<br>
+        पीएस भानीपुरा<br>
+        ${post?'हाल '+post:''}
+      </td>
+      <td>${cn}</td>
+      <td>${nd}</td>
+      <td>श्रीमान <strong>${cH}</strong> ने साक्षी को ${ba?ba.toLocaleString('en-IN')+'/-  रुपये के ':''}<strong>${wType}</strong> से तलब फरमाया है।${dh?' धारा '+dh+' के तहत।':''}<br>अत् साक्षी को पाबद्द कर न्यायालय भिजवावें।</td>
+    </tr>
+  </table>
+  <div class="sig">
+    <div style="display:inline-block;text-align:center">
+      <div style="height:50px"></div>
+      <div class="underline"><strong>एसएचओ</strong></div>
+      <div>थानाधिकारी</div>
+      <div>पुलिस थाना भानीपुरा</div>
+      <div>जिला चूरू।</div>
+    </div>
+  </div>
+  </body></html>`;
+
+  // Open in new window for print
+  const pw=window.open('','_blank');
+  pw.document.open();
+  pw.document.write(letterHTML);
+  pw.document.close();
+  pw.onload=function(){pw.print();};
+  setTimeout(()=>{if(pw&&!pw.closed)pw.print();},700);
+}
+function printWarrant(){
+  const w=document.getElementById('pwdoc');if(!w){alert('पहले वारंट बनाएं!');return;}
+  const css=`
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{width:210mm;min-height:297mm}
+    body{font-family:"Noto Sans Devanagari","Mangal","Arial Unicode MS",serif;padding:15mm 18mm;font-size:11.5pt;color:#000;background:white}
+    .wdoc{font-size:11.5pt;line-height:1.75;color:#000}
+    .wh{text-align:center;margin-bottom:12px;border-bottom:2.5px solid #000;padding-bottom:8px}
+    .wh h2{font-size:14pt;font-weight:bold;margin-bottom:3px}
+    .wh h3{font-size:11pt;font-weight:normal}
+    .wm{display:flex;justify-content:space-between;margin-bottom:12px;font-size:11pt}
+    .wml{border:1px solid #000;padding:7px 11px;line-height:1.6}
+    .wmr{text-align:right;line-height:1.6}
+    .wb{text-align:justify;margin-bottom:10px;line-height:1.85}
+    .wbx{border:2px solid #000;padding:10px;margin:12px 0;text-align:center;line-height:1.8}
+    .wbxt{font-weight:bold;margin-bottom:5px;font-size:12pt}
+    .ww{border:2px solid #c00;padding:9px;margin:12px 0;text-align:center;font-weight:bold;color:#c00;font-size:11pt;line-height:1.6}
+    .wsg{margin-top:22px;display:flex;justify-content:space-between}
+    .wsb{text-align:center;width:45%}
+    .wsi{margin-top:55px;border-top:1px solid #000;padding-top:5px;font-size:11pt}
+    u{text-decoration:underline}
+    @page{size:A4 portrait;margin:0}
+    @media print{
+      html,body{width:210mm;height:297mm}
+      body{padding:15mm 18mm}
+      @page{size:A4;margin:0}
+    }`;
+  const pw=window.open('','_blank');
+  pw.document.open();
+  pw.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><title>वारंट — भानीपुरा</title><style>'+css+'</style></head><body>'+w.innerHTML+'</body></html>');
+  pw.document.close();
+  pw.onload=function(){pw.print();};
+  setTimeout(()=>{if(pw&&!pw.closed)pw.print();},900);
+}
+
+// ── CLOSE MODALS ──
+function closeM(id){document.getElementById(id).classList.remove('open');}
+['em','mm','srm','um','stfm','nism'].forEach(id=>{const el=document.getElementById(id);if(el)el.addEventListener('click',function(e){if(e.target===this)closeM(id);});});
+document.getElementById('wm').addEventListener('click',function(e){if(e.target===this)closeM('wm');});
+document.getElementById('le').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});
+document.getElementById('lp').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});
+
+// ── INIT ──
+recs=loadLocal();
+fillStaffDropdowns();
+window._onFbReady=function(){};
+if(window._fbReady)window._onFbReady();
+</script>
+</body>
+</html>
